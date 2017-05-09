@@ -71,7 +71,7 @@ select,
 textarea {
     max-width: 280px;
 }
-.navbar-default {
+.navbar-custom {
     background-color: black;
     color: white;
   
