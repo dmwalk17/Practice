@@ -1,9 +1,11 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
+@using (Html.BeginForm("Index", "Customer", FormMethod.Post, new { id = "TheForm" }))
+{
 <div class="row">
     <label class="col-md-offset-1 col-md-3">Select a customer:</label>
-    <span class="col-md-4">@Html.DropDownList("Customers", (SelectList)ViewBag.Customers, new { @class = "ddl" }) </span>
+    <span class="col-md-4">@Html.DropDownList("ddlCustomers", (SelectList)ViewBag.Customers, new { onchange = "this.form.submit();" }) </span>
 </div><br /><br />
 
 <div class="row">
@@ -22,7 +24,7 @@
     <span class="col-md-4">@Html.Label("lblEmail", (string)ViewBag.Email)</span>
 </div><br />
 <div class="row">
-    <button class="myButtons col-md-offset-1 col-md-2" onclick="location.href='@Url.Action("Create", "Customer")';return false;">Add to Contact List</button>
-    <button class="myButtons col-md-offset-1 col-md-2" onclick="location.href='@Url.Action("ContactList", "Customer")';return false;">Display Contact List</button>
+    <button class="myButtons2 col-md-offset-1 col-md-2" onclick="location.href='@Url.Action("Create", "Customer")';return false;">Add to Contact List</button>
+    <button class="myButtons2 col-md-offset-1 col-md-2" onclick="location.href='@Url.Action("ContactList", "Customer")';return false;">Display Contact List</button>
 </div>
-
+}
