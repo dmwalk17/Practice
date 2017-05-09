@@ -71,8 +71,8 @@ select,
 textarea {
     max-width: 280px;
 }
-span {
-
-  color: white
+.navbar-default {
+    background-color: black;
+    color: white;
   
 }
