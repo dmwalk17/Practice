@@ -12,14 +12,41 @@ namespace SportsPro.Controllers
         // GET: Customer
         public ActionResult Index()
         {
- 
-        var selectedCust= new Customer();
+
+            var selectedCust = new Customer();
             dw_TechSupportDBContext db = new dw_TechSupportDBContext();
+            ViewData["SelectedItem"] = Request["ddlCustomers"];
             var getCustomerList = db.Customers.OrderBy(x => x.Name).ToList();
             SelectList list = new SelectList(getCustomerList, "CustomerId", "Name");
             foreach (var cust in getCustomerList)
             {
-                if(cust.IsSelected == true)
+                if (cust.IsSelected == true)
+                {
+                    ViewBag.Address = cust.Address;
+                    ViewBag.City = cust.City;
+                    ViewBag.State = cust.State;
+                    ViewBag.Zip = cust.ZipCode;
+                    ViewBag.Phone = cust.Phone;
+                    ViewBag.Email = cust.Email;
+                }
+
+               
+            }
+            ViewBag.Customers = list;
+            return View();
+        }
+                [HttpPost]
+        public ActionResult Index(string dummy)
+        {
+
+            var selectedCust = new Customer();
+            dw_TechSupportDBContext db = new dw_TechSupportDBContext();
+            ViewData["SelectedItem"] = Request["ddlCustomers"];
+            var getCustomerList = db.Customers.OrderBy(x => x.Name).ToList();
+            SelectList list = new SelectList(getCustomerList, "CustomerId", "Name", ViewData["SelectedItem"]);
+            foreach (var cust in getCustomerList)
+            {
+                if (cust.CustomerID == Convert.ToInt32(ViewData["SelectedItem"]))
                 {
                     ViewBag.Address = cust.Address;
                     ViewBag.City = cust.City;
@@ -29,16 +56,35 @@ namespace SportsPro.Controllers
                     ViewBag.Email = cust.Email;
                 }
             }
-           
-
             ViewBag.Customers = list;
             return View();
-     
-
-           
-
         }
 
+        public ViewResult AddContact()
+        {
+            try
+            {
+                
+                return View();
+            }
+            catch
+            {
+                return View();
+            }
+           
+        }
+
+        public PartialViewResult DeleteContact()
+        {
+            return PartialView("_ContactView");
+        }
+
+        public PartialViewResult UpdateContact()
+        {
+            dw_TechSupportDBContext db = new dw_TechSupportDBContext();
+            List<Customer> model = db.Customers.ToList();
+            return PartialView("_ContactView", model);
+        }
         public ActionResult ContactList()
         {
             dw_TechSupportDBContext db = new dw_TechSupportDBContext();
