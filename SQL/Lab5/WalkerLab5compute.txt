@@ -1,0 +1,52 @@
+/**************************************************************************************/
+/* File name: WalkerLab5.txt												  		  */
+/* Purpose: To prepare an SQL report according to a specified format using SQLPlus	  */
+/* Written by: Donna Walker															  */
+/* Course: CSIT 2520 - Spring, 2016													  */
+/* Creation date: 2/29/2016															  */
+/**************************************************************************************/
+
+--Turn on feedback commands so comments don't print on report 
+set verify off
+set echo off
+--sets top title to match content and sources specified
+--uses SQL.USER to print user name and _Date to print date 
+ttitle left 'Charter Mileage Report by ' SQL.USER ' on ' _Date
+--Uses Bottom title provided
+btitle center 'CSIT 2520 Lab5 - Spring, 2016'
+--sets page size and line size
+set pagesize 68
+set linesize 60
+--Breaks on char_destination to group (as a whole) by char_destination & skips 2 lines per instructions
+break on char_destination skip 2 on report 
+--Displays averages and totals specific 'pretty' titles and references select alias in 'of' 
+--Uses char_destination which must be in the order by column in the select to use
+compute sum of distance on ac_number
+compute sum of gallons on ac_number
+compute sum of mpg on ac_number
+compute avg label 'Avg mpg' of mpg on char_destination
+compute sum label 'Totals' of distance on char_destination
+compute sum label 'Totals' of gallons on char_destination
+compute sum label 'Report Totals' of distance on report
+compute sum label 'Report Totals' of gallons on report
+
+
+--clears column settings
+clear columns
+--designates column title seperator
+set headsep |
+--formats columns using alias providing heading for 'pretty' display and format number or length
+column char_destination heading 'Destination' format A14
+column ac_number heading 'Aircraft' format A10
+column distance heading 'Miles | Traveled' format 99,999 
+column gallons heading 'Fuel Used | in Gallons' format 9999.9
+column mpg heading 'MPG' format 9.999
+--select statement did gallons per mile because it fit the provided data
+select char_destination, ac_number, char_distance as "distance", 
+  char_fuel_gallons as "gallons", ((char_fuel_gallons)/(char_distance)) as "mpg"
+from charter
+order by char_destination, ac_number;
+
+clear columns
+ttitle off
+btitle off
