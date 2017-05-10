@@ -26,4 +26,4 @@ I am hoping to do this using a model, a partial view with a border, and buttons
 linked to Crud operations.
 
 5/9/2017
-Made progress on creating the code for CustomerList to store Contacts, but will need to use session state. Need to research using session state with MVC. Also need to figure out how to properly implement navbar-invert with a footer in current bootstrap. Currently goes black, but color stays black. Also still working on properly implementing a partial view. Space depicts it exists, but the partial view is not rendering (text, outline). 
+Made progress on creating the code for CustomerList to store Contacts, but will need to use session state. Need to research using session state with MVC. Also need to figure out how to properly implement navbar-invert with a footer in current bootstrap. Currently goes black, but color stays black. Also still working on properly implementing a partial view. Space depicts it exists, but the partial view is not rendering (text, outline).
