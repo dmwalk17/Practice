@@ -1,0 +1,516 @@
+#! /usr/bin/python
+# File: WalkerD_lab5a.py for CSIT 2280
+# Assignment: Python - Problem 2.7
+# Author: Donna Walker
+# Uses a triple nested for loop to run a conditional looking for 
+# Pythagorean triples for numbers equal to 20 or less. 
+import math
+for a in range (1, 21):
+  for b in range (1, 21):
+    for c in range (1, 21):
+      if a**2 + b**2 == c**2:  
+        print a, b, c
+		
+		
+#Example from class for 1st python lab.		
+#!/usr/bin/python
+#Asks for a number and returns the square root of that number using the math class.
+import math as m
+x = input('please enter a number: ')
+print 'Square root is: ', m.sqrt(x)
+
+
+
+#! /usr/bin/python
+# File: WalkerD_lab6b.py for CSIT 2280     
+# Assignment: Python - problem 2.21             
+# Author: Donna Walker     
+# Takes in a user-defined word and counts the
+# number of letter, vowels and percentage of letters that are vowels.
+
+#Initiates variables
+letterCount = 0
+vowelCount = 0
+letter = 1
+notValid = True
+
+print "This program takes in a word and tabulates the number of letters,"
+print "vowels, and the percentage of letters that are vowels\n"
+word = raw_input("Enter a word: ")
+
+# Uses while loop and a conditional to validate data input as only letters.
+while notValid:
+  if word.isalpha():
+    
+    # Counts letters.
+    for letter in word:
+      letterCount = letterCount + 1
+
+      #Defines a vowel as not including 'y' and either upper or lowercase
+      if letter in 'aeiouAEIOU':
+        vowelCount = vowelCount + 1
+    break
+  # Asks for re-entry if input was not a word.
+  else:
+    word = raw_input("A word only contains letters. Try again. Enter a word:")
+ 
+#Displays results.
+print 'Letters: ', letterCount
+print 'Vowels: ', vowelCount
+print 'Percentage of vowels: ', float(vowelCount)/letterCount*100, '%'
+
+
+#! /usr/bin/python
+# File: WalkerD_lab6c.py for CSIT 2280
+# Assignment: Python - Problem 2.24
+# Author: Donna Walker
+# Description: Plays the dice game Craps using the rules defined 
+# in method showRules below.  
+#
+import random
+
+# Comments in the first line of this method using a string. 
+# I realize I just commented about a comment, but I was excited it worked and 
+# I promise not to do it again.
+def roll():
+  "Rolls a die."
+  x = random.randint(1,6)
+  return x
+
+def showRules():
+  "Explains the rules, if requested."
+  print "\nA player rolls a pair of dice. If the sum of dice is either 7 or 11"
+  print "on the first throw, the player wins. If the sum is 2, 3, or 12 on"
+  print "the first roll, the player loses. Any other sum becomes the player's"
+  print '"point." To win, the player must continue rolling the dice until a '
+  print 'roll matches the point. This is termed "making the point." If the'
+  print "player rolls a 7 before making the point, the player loses.\n"
+
+def callRoll(die1, count, sum):
+  "Calls the roll by it's proper gambling term."
+  if sum == 2:
+    print "Snake eyes" 
+  elif sum == 3:
+    print "Acey Deucey"
+  elif sum  == 4:
+    if die1 == 2:
+      print "Hard Four"
+    else:
+      print "Easy Four" 
+  elif sum == 5:   
+    print "Fever Five"
+  elif sum == 6:
+    if die1 == 3:
+      print "Hard Six"
+    else:
+      print "Easy Six"
+  elif sum == 7:
+    if count == 0:
+      print "Natural"
+    else:
+      print "Seven Out"
+  elif sum==8:
+    if die1 == 4:
+      print "Hard Eight"
+    else:
+      print "Easy Eight"
+  elif sum == 9:
+    print "Nina"
+  elif sum ==  10:
+    if die1 == 5:
+      print "Hard Ten"
+    else:
+      print "Easy Ten"
+  elif sum == 11:
+    print "Yo-leven"
+  elif sum == 12:
+    print "Boxcars"
+  else:
+    print "This line should have been unreachable."
+    print "You are kicked out for using illegal dice!"
+  
+# Initializes variables.
+die1 = 0
+die2 = 0
+sum = 0
+point = 0
+count = 0
+
+print "This program is designed to play a round of craps."
+print "\nPress enter to play. If you'd prefer to see the rules first,"
+x = raw_input('type the word "rules" now instead: ')
+
+# Calls the method showRules if the player wants to see the rules.
+if x == "rules" or x == "RULES" or x == "Rules":
+  showRules()
+
+play = raw_input('\nWould you like to play craps? Enter true or false: ')
+
+# Utilizes a while loop to start/continue a new game.
+while play == 'true' or play =='True' or play == 'TRUE':
+  die1 = roll()
+  die2 = roll()
+  print "Your first roll is: ", die1, "and", die2
+  sum = die1 + die2
+  callRoll(die1, count, sum)
+
+  # Uses a conditional to evaluate the first roll as a win, loss or assigns
+  # point to continue play.
+  if sum == 2 or sum == 3 or sum == 12:
+    print "You lose."
+  elif sum == 7 or sum == 11:
+    print "Lucky", sum,"! You win!"
+  else:
+    count = count + 1
+    point = sum
+
+    # After incrementing counter utilizes a while loop to continue play until
+    # the player makes the point or rolls a seven and loses. 
+    while count == 1:
+      print "The player's point is: ", point
+      die1 = roll()
+      die2 = roll()
+      print "Your next roll is:", die1, "and", die2
+      sum = die1 + die2
+      callRoll(die1, count, sum)
+
+      # Evaluates the roll as a win, loss or continues next roll.
+      if sum == 7:
+        print "You lose."
+        break
+      elif sum == point:
+        print "Player makes the point!"
+        print "You win!!"
+        break
+      else:        
+        print "Sorry...Roll again!\n"
+
+  # After the round is over, clears the counter to zero and asks
+  # player if they wish to play another round.
+  count = 0
+  play = raw_input("\nDo you want to play again? Enter true or false: ")
+  
+  
+#!/usr/bin/python
+# Name: Donna Walker
+# CSIT-2280
+# Date: 4/9/2015
+# Description: Reads a string of text from a file, encrypts it, using a 
+# dictionary and writes it to another file named Encrypted_originalFileName.
+import sys
+from sys import argv
+
+def checkArgv(numArgv):
+  "Avoids exception from commandline arguments." 
+  if numArgv > 2:
+    print "Too many arg in line" 
+    print" Correct usage: ./enc.py input_file_name or python enc.py input_file"
+    sys.exit(2)
+  elif numArgv < 2:
+    print "Need two args in line"
+    print "Correct usage: ./enc.py input_file_name or python enc.py input_file"
+    sys.exit(2)
+
+def swap(letter, crypt):
+  "Swaps the regular letter for the encrypted value"
+  letter = crypt
+  return letter
+
+#Initializes encryption dictionary and other variables for processing text. 
+key={}
+keys = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+values = ['h','c','o','g','n','a','t','m','w','y','b','u','l','e','i','s','p','f','x','j','k','q','d','v','z','r']
+vault = dict(zip(keys, values))
+i=0
+output=[]
+numArgv=len(argv)
+#Invokes method to check number of arguments in command line.
+checkArgv(numArgv)
+
+#Opens and reads from file from commandline argument $1
+file=open(argv[1])
+input=file.read().lower()
+
+#Utilizes nested for loops to change each letter in the source file to the
+# Encrypted letter using dictionary and swap method and appends to a list 
+# (output) for writing to target file.
+for letter in input:
+  for next in keys:  
+    if letter.isalpha():
+      if letter == keys[i]:
+        temp = swap(letter,vault.get(letter))
+        output.append(temp)
+        i=0
+        break
+      else:
+        i+=1
+    else:
+      temp = letter        
+      output.append(temp)
+      break
+
+# Opens,writes to, and closes files. File name includes original source file
+# name with 'encrypted_' in front of it.
+f= open('encrypted_'+argv[1],'w')
+f.writelines(output)
+file.close()
+f.close()  
+
+
+
+#!/usr/bin/python
+import pickle
+
+# simple example to demonstrate how the pickle module works
+
+veggies = {'tomato':1.5, 'cucumber': 2, 'radish':15}
+fp = open("temp.txt", 'w')
+pickle.dump(veggies, fp)
+fp.close()
+print 'veggies have beeen pickled, loading...'
+fq = open("temp.txt")
+salad = pickle.load(fq)
+print 'after loading from file, salad contains:\n', salad
+fq.close()
+
+
+
+
+
+#!/usr/bin/python
+
+# determines word frequencies in user input. 
+# type 'quit' to exit program
+
+freq = {}
+line = raw_input()
+while line != 'quit':
+  words = line.split()
+  for word in words:
+    freq[word] = freq.get(word, 0) + 1
+  line = raw_input()
+
+# when 'quit' detected:
+for word in freq:
+  print word, ': ', freq[word]
+
+
+
+
+  
+#!/usr/bin/python
+
+# determines word frequencies in user input. 
+# type 'quit' to exit program
+
+freq = []
+term_list = []
+line = raw_input()
+while line != 'quit':
+  words = line.split()
+  for word in words:
+    if word not in term_list:
+      term_list.append(word)
+      freq.append(1)
+    else:
+      i = term_list.index(word)
+      freq[i] += 1
+  line = raw_input()
+
+# when 'quit' detected:
+i = 0
+for word in term_list:
+  print word, ': ', freq[i]
+  i += 1  
+ 
+
+
+#!/usr/bin/python
+from sys import argv
+
+# determines word frequencies in a given text file
+# usage: ./file_counts.py input_filename
+
+def count(file):
+  freq = {}
+  lines = file.readlines()
+  for line in lines:
+    words = line.split()
+    for word in words:
+      freq[word] = freq.get(word, 0) + 1
+  return freq
+
+#main
+file = open(argv[1])
+freq = count(file)
+for word in freq:
+  print word, ': ', freq[word]
+file.close()
+
+
+
+#!/usr/bin/python
+# File: WalkerD_lab7.py
+# Assignment: Lab7 CSIT 2280
+# Author: Donna Walker
+# Description: Uses string and lists to create an Eliza-like chatbot similar 
+# to the example given in pg. 82 of Exploring Python. 
+# Theme: Mimics a pizza delivery worker taking a pizza order.
+
+import string
+line = ""
+global pizza
+pizza = [0] 
+
+def getContact (line, words):
+  "Confirms and records the customer's last name"
+  name = 'Smartypants'
+  if len(words) == 0: 
+    pizza[0] = name 
+    return "I'll take that as a yes. What size do you want?"
+  if 'yes' in words: 
+    pizza[0] = name
+    return "Great. What size do you want?"
+  if 'no' in words: 
+    print 'Ok. Sorry.'
+    name = raw_input("what\'s your last name? ")
+    pizza[0] = name
+    return 'Ok. Got it. What size do you want?'
+  pizza[0] = 'Smartypants'
+  return "What size pizza do you want?"  
+
+def getSize (line, words):  
+  "Confirms the size of the pizza being ordered"  
+  if len(words) == 0: return "We have small, medium or large. Which one?"
+  if 'small' in words: 
+    pizza.append('small')
+    return "Ok, small. What type of crust do you want?"
+  if 'medium' in words: 
+    pizza.append('medium')      
+    return "Medium. Ok, what type of crust do you want?"  
+  if 'large' in words: 
+    pizza.append('large')
+    return "large, just a second. Ok, what type of crust do you want?"
+  if 'recommend' in words:  
+    pizza.append('large')
+    return "I'd recommend large. What type of dough do you want?"
+  pizza.append('medium')
+  print "The perfect answer for that is a medium pizza."
+  return "We have hand tossed, deep dish and thin. What dough do you want?"
+
+def getCrust (line, words):
+  "Gets the type of pizza crust the customer wants."  
+  if len(words) == 0: 
+    print "The idea of a handtossed pizza leaves me speechless too!"
+    pizza.append('handtossed')
+    return "Do you want red or white sauce? "
+  if 'hand' in words:
+    pizza.append('handtossed')
+    return "Ok, hand tossed. Do you want red or white sauce?"
+  if 'handtossed' in words:
+    pizza.append('handtossed')
+    return "Hand tossed. Would you like red or white sauce?"
+  if 'thin' in words:
+    pizza.append('thin')
+    return "Thin crust. Ok, what type of sauce, red or white?"
+  if 'dish' in words:
+    pizza.append('deepdish')
+    return "deepdish. Ok, Red or white sauce?"
+  if 'recommend' in words:
+    pizza.append('handtossed')
+    return "I'd recommend hand tossed. Red or white sauce?"
+  pizza.append('glutenfree')
+  return "Ok. Something special then. Do you like red or white sauce?"
+
+def getSauce (line, words):
+  "Takes the customer's sauce order"
+  if len(words) == 0:
+    pizza.append('red')
+    print "Your a person of few words..."
+    return "The white sauce is out of a can:P disgusting. Pepperoni or sausage?"
+  if 'white' in words:
+    pizza.append('white')
+    return "Ok white sauce. do you want sausage, pepperoni or anchoivies?"
+  if 'red' in words:
+    pizza.append('red')
+    return "red sauce ok do you want pepperoni, sausage, or  anchovies?"
+  if 'recommend' in words:
+    pizza.append('red')
+    return "The white sauce is out of a can:P disgusting. Pepperoni or sausage?"
+  pizza.append('red')
+  return "We have pepperoni, sausage and anchovy. What do you want?";   
+  
+def getToppings(line, words):
+  "Offers limited toppings"
+  if 'pepperoni' in words:
+    pizza.append('pepperoni')
+  if 'sausage' in words:
+    pizza.append('sausage')
+  if 'anchovy' in words: 
+    pizza.append('anchovy')
+  if 'anchovies' in words:
+    pizza.append('anchovy')
+  if 'everything' in words:  
+    pizza.append('sausage')
+    pizza.append('pepperoni') 
+    pizza.append('anchovy')
+  if 'Give me' in words:
+    pizza.append('anchovy')
+    return "ask nicely. I'm giving you anchovy."
+  return "Do you know our store location? We don't have delivery "
+  
+  
+def getTotal (line, words):
+  "Calculates the order total & gives direction if needed."
+  if 'no' in words:
+    print "\nWe are on Main, next to the building with the tie dye bull on top"
+    print "Trust me. You can't miss it."
+  print 'Your pizza will be ready for pickup in 20 minutes.'
+  total = 0.00
+  if 'small' in pizza:
+    total = total + 5.00
+  if 'medium' in pizza:
+    total = total + 7.00
+  if 'large' in pizza:
+    total = total + 10.00
+  if len(pizza)>4:
+    tops = len(pizza)-4
+    total = total + (tops * 1.00)
+  output = 'It will cost $%4.2f'%(total)
+  print output
+  print "Thank you for shopping at Tony's"
+  print 'Goodbye.'
+
+# Initiates the pizza order
+print "Hello. Tony's Pizza, home of the bacon basket deepdish pizza."
+print "We have this number registered to Mr. Smartypants, "
+line  = raw_input(" Is this you?")
+
+ 
+#Calls all the methods in order to get the customer's pizza order.
+#If the customer wants to talk about other things, surreptitiously places
+# pizza order for customer along the way.
+
+line = line.lower()
+reply = getContact(line, line.split())
+line = raw_input(reply)  
+words = line.split() 
+line = line.lower()
+reply = getSize(line, line.split())
+line = raw_input(reply)
+line = line.lower()
+reply = getCrust(line, line.split())
+line = raw_input(reply)
+line = line.lower()
+reply = getSauce(line, line.split())
+line = raw_input(reply)
+line = line.lower()
+reply = getToppings(line, line.split())   
+line = raw_input(reply)
+print "Let's see..."
+finalPizza = ' '.join(pizza)
+finalPrint = 'Mr %s'%(finalPizza)
+print finalPrint
+print "Your order is complete!"
+line = line.lower()
+getTotal(line, line.split()) 

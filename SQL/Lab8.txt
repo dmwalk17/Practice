@@ -1,0 +1,44 @@
+-- DWalker1
+--Human Resources
+--CSIT 2520 - Lab8
+
+--1
+--Prepare roles
+--CREATE ROLE charter_president IDENTIFIED by president_password;
+--CREATE ROLE charter_mechanic;
+--CREATE ROLE charter_hr IDENTIFIED by hr_password;
+--CREATE ROLE charter_scheduler;
+
+--2
+-- completed with warning did not copy primary key constraint
+create table avia_employee_backup
+ as (select * from avia_employee);
+ -- added primary key
+ alter table avia_employee_backup
+   add PRIMARY KEY (emp_num);
+   
+--3
+create role hr_manager identified by hr_manager_pass; 
+
+grant select, insert, update, delete on avia_employee to hr_manager;
+>role HR_MANAGER created.
+>grant succeeded.
+grant hr_manager to dbpresswood;
+>grant succeeded.
+grant hr_manager to dwalker1;
+>grant succeeded.
+ 
+--insert into avia_employee 
+-- values(111, 'Ms.', 'Walker','Donna', 'M', to_date('15-OCT-1970', 'dd-MON-yyyy'), to_date('10-JAN-2014', 'dd-MON-YYYY'));
+ 
+ 
+-- insert into dbpresswood.pilot 
+-- values(111, 'atp', 'ATP/SEL/MEL/Instr','1', to_date('15-DEC-2012', 'dd-MON-yyyy'), to_date('10-OCT-2015', 'dd-MON-YYYY'));
+
+ create view 
+   employees 
+as
+select 
+   columns
+from 
+   tables;
