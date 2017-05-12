@@ -61,20 +61,18 @@ namespace SportsPro.Models
         Creates a new session state item if one does not already exist */
         public static CustomerList GetCustomers()
         {
-            //adding data to session
-            //assuming the method below will return list of Products
+ 
+            if (System.Web.HttpContext.Current.Session["ContactList"] != null)
+            {
 
-            //var products = Db.GetProducts();
+               //<List>Customer = System.Web.HttpContext.Current.Session["ContactList"];
+            }
+            else
+            {
+               // HttpContext.Session["ContactList"] = new CustomerList();
+            }
 
-            //Store the products to a session
-
-            //Session["products"] = products;
-
-            //To get what you have stored to a session
-
-            //var products = Session["products"] as List<Product>;
-
-            return null;
+           // return customerList;
         }
 
         //Adds a customer to the list of customers

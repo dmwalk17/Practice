@@ -32,6 +32,8 @@ namespace SportsPro.Controllers
 
                
             }
+            Session["myValue"] = 8;
+            ViewBag.MyValue = Session["myValue"];
             ViewBag.Customers = list;
             return View();
         }
