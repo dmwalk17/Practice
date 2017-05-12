@@ -1,21 +1,21 @@
-﻿@model IEnumerable<SportsPro.Models.Customer>
+﻿@model IEnumerable<SportsPro.Models.CustomerList>
 
-<div class="myContacts">
+
 <table class="table" style="border: 4px solid black;">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @*@Html.DisplayNameFor(model => model.Name)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Address)
+            @*@Html.DisplayNameFor(model => model.Address)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.City)
+            @*@Html.DisplayNameFor(model => model.City)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.State)
+            @*@Html.DisplayNameFor(model => model.State)*@
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.ZipCode)
         </th>
         <th>
@@ -23,42 +23,34 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsSelected)
-        </th>
-        <th></th>
+        </th>*@     
     </tr>
 
-@foreach (var item in Model) {
+@*@foreach (var item in Model) {*@
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @*@Html.DisplayFor(modelItem => item.Name)*@ temp
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Address)
+            @*@Html.DisplayFor(modelItem => item.Address)*@
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.City)
+            @*@Html.DisplayFor(modelItem => item.City)*@
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.State)
+            @*@Html.DisplayFor(modelItem => item.State)*@
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ZipCode)
+            @*@Html.DisplayFor(modelItem => item.ZipCode)*@
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Phone)
+            temp
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsSelected)
+            Temp
         </td>
 
     </tr>
-}
+@*}*@
 
 </table>
-</div>
