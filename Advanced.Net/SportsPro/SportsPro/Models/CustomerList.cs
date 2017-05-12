@@ -7,18 +7,18 @@ namespace SportsPro.Models
 {
     public class CustomerList
     {
-        private List<Customer> contactList;
+        private List<Customer> customerList;
 
         //Gets/sets the customer at the specified index;
         public Customer this[int index]
         {
             get
             {
-                return this.contactList[index];
+                return this.customerList[index];
             }
             set
             {
-                this.contactList[index] = value;
+                this.customerList[index] = value;
             }
         }
 
@@ -27,7 +27,7 @@ namespace SportsPro.Models
         {
             get
             {
-                foreach (Customer cus in contactList)
+                foreach (Customer cus in customerList)
                 {
                     if (cus.Name == name)
                     {
@@ -43,16 +43,16 @@ namespace SportsPro.Models
         {
             get
             {
-                return contactList.Count();
+                return customerList.Count();
             }
 
         }
         //Creates a new List<Customer> object and stores it in the private field
         public CustomerList()
         {
-            if (contactList.Count < 1)
+            if (customerList.Count < 1)
             {
-                contactList = new List<Customer>();
+                customerList = new List<Customer>();
 
             }
 
@@ -61,7 +61,18 @@ namespace SportsPro.Models
         Creates a new session state item if one does not already exist */
         public static CustomerList GetCustomers()
         {
-           
+            //adding data to session
+            //assuming the method below will return list of Products
+
+            //var products = Db.GetProducts();
+
+            //Store the products to a session
+
+            //Session["products"] = products;
+
+            //To get what you have stored to a session
+
+            //var products = Session["products"] as List<Product>;
 
             return null;
         }
@@ -81,7 +92,7 @@ namespace SportsPro.Models
         //Clears the list of customers
         public void Clear()
         {
-
+             //Session["CustomerList"] = null;
         }
 
     }
