@@ -72,7 +72,7 @@ namespace SportsPro.Models
                // HttpContext.Session["ContactList"] = new CustomerList();
             }
 
-           // return customerList;
+            return null;
         }
 
         //Adds a customer to the list of customers

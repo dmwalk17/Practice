@@ -183,5 +183,17 @@ namespace SportsPro.Controllers
                 return View();
             }
         }
+
+        public ActionResult Survey()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Survey(string dummy)
+        {
+            return View();
+        }
     }
 }

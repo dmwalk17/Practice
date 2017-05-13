@@ -1,0 +1,90 @@
+﻿@model IEnumerable<SportsPro.Models.Incident>
+
+@{
+    
+    ViewBag.Title = "Survey";
+}
+
+@using (Html.BeginForm("Survey", "Customer", FormMethod.Post, new { id = "TheForm" }))
+{
+    <div class="row">
+        <label class="col-md-offset-1 col-md-3">Enter your customer ID:</label>
+        <span class="col-md-4">@Html.TextBox("txtCustNumber") </span>@Html.ActionLink("Get Incidents", "GetIncidents", "Customer", null, new { @class = "btn btn-default myButtons2" })
+    </div><br /><br />
+    <div class="Incidents" style="border-color:black; border-width: 5px; width:80%; height:20%">
+
+    </div><br /><br />
+    <div class="row">
+        <label>Please rate this incident by the following categories:</label>
+    </div>
+    <div class="row">
+            <label class="col-md-2">Response time:</label>
+            <label>
+                @Html.RadioButton("ResponseTime", 1)
+                Not satisfied
+            </label>
+            <label>
+                @Html.RadioButton("ResponseTime", 2)
+                Somewhat satisfied
+            </label>
+            <label>
+                @Html.RadioButton("ResponseTime", 3)
+                Satisfied
+            </label>
+            <label>
+                @Html.RadioButton("ResponseTime", 4)
+                Completely satisfied
+            </label>
+        </div>
+
+        <div class="row">
+            <label class="col-md-2">Technical efficiency:</label>
+            <label>
+                @Html.RadioButton("TechEfficiency", 1)
+                Not satisfied
+            </label>
+            <label>
+                @Html.RadioButton("TechEfficiency", 2)
+                Somewhat satisfied
+            </label>
+            <label>
+                @Html.RadioButton("TechEfficiency", 3)
+                Satisfied
+            </label>
+            <label>
+                @Html.RadioButton("TechEfficiency", 4)
+                Completely satisfied
+            </label>
+        </div>
+
+        <div class="row">
+            <label class="col-md-2">Problem resolution:</label>
+            <label>
+                @Html.RadioButton("Resolution", 1)
+                Not satisfied
+            </label>
+            <label>
+                @Html.RadioButton("Resolution", 2)
+                Somewhat satisfied
+            </label>
+            <label>
+                @Html.RadioButton("Resolution", 3)
+                Satisfied
+            </label>
+            <label>
+                @Html.RadioButton("Resolution", 4)
+                Completely satisfied
+            </label>
+        </div>
+
+        <div class="row">
+            <label class="col-md-2">Additional comments:</label><textarea></textarea>
+        </div>
+        
+
+        
+
+
+
+
+}

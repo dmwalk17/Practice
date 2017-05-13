@@ -26,5 +26,7 @@ namespace SportsPro.Models
         }
     
         public virtual DbSet<Customer> Customers { get; set; }
+
+        public System.Data.Entity.DbSet<SportsPro.Models.Incident> Incidents { get; set; }
     }
 }
