@@ -228,6 +228,24 @@
     </Compile>
     <Compile Include="Models\CustomerList.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Incident.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Incident.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Incident.cs">
+      <DependentUpon>Incident.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Incident.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Incident.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Incident1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Incident.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -255,6 +273,16 @@
       <DependentUpon>Customer.edmx</DependentUpon>
       <LastGenOutput>Customer1.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\Incident.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Incident.edmx</DependentUpon>
+      <LastGenOutput>Incident.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Incident.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Incident.edmx</DependentUpon>
+      <LastGenOutput>Incident1.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -266,6 +294,13 @@
     </EntityDeploy>
     <Content Include="Models\Customer.edmx.diagram">
       <DependentUpon>Customer.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\Incident.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Incident.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Incident.edmx.diagram">
+      <DependentUpon>Incident.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
