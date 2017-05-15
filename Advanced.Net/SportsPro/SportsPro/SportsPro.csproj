@@ -208,6 +208,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705020251267_InitialCreate.cs" />
+    <Compile Include="Migrations\201705020251267_InitialCreate.Designer.cs">
+      <DependentUpon>201705020251267_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705152039259_AddedNameFieldInTable.cs" />
+    <Compile Include="Migrations\201705152039259_AddedNameFieldInTable.Designer.cs">
+      <DependentUpon>201705152039259_AddedNameFieldInTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BusinessLayerCustomer.cs" />
     <Compile Include="Models\Customer.Context.cs">
@@ -377,6 +386,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Technician\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201705020251267_InitialCreate.resx">
+      <DependentUpon>201705020251267_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705152039259_AddedNameFieldInTable.resx">
+      <DependentUpon>201705152039259_AddedNameFieldInTable.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

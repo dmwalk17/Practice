@@ -489,3 +489,7 @@ C:\Users\Donna\Documents\GitHub\Practice\Advanced.Net\SportsPro\SportsPro\bin\Mi
 C:\Users\Donna\Documents\GitHub\Practice\Advanced.Net\SportsPro\SportsPro\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Donna\Documents\GitHub\Practice\Advanced.Net\SportsPro\SportsPro\obj\Debug\SportsPro.dll
 C:\Users\Donna\Documents\GitHub\Practice\Advanced.Net\SportsPro\SportsPro\obj\Debug\SportsPro.pdb
+C:\Users\Donna\Documents\GitHub\Practice\Advanced.Net\SportsPro\SportsPro\obj\Debug\SportsPro.csprojResolveAssemblyReference.cache
+C:\Users\Donna\Documents\GitHub\Practice\Advanced.Net\SportsPro\SportsPro\obj\Debug\SportsPro.Migrations.InitialCreate.resources
+C:\Users\Donna\Documents\GitHub\Practice\Advanced.Net\SportsPro\SportsPro\obj\Debug\SportsPro.csproj.GenerateResource.Cache
+C:\Users\Donna\Documents\GitHub\Practice\Advanced.Net\SportsPro\SportsPro\obj\Debug\SportsPro.Migrations.AddedNameFieldInTable.resources

@@ -9,7 +9,7 @@
 
 </head>
 <body>
-    
+
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -22,48 +22,59 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customer Support <b class="caret"></b></a>
+
+                    @if (User.IsInRole("Customer"))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customer Support <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Register products</a></li>
                                 <li><a href="~/Customer/Survey">Complete customer survey</a></li>
-                            </ul> 
-                    </li>   
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Technician Support <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Display customer incidents</a></li>
-                            <li><a href="#">Update incidents</a></li>
-                        </ul>
-                    </li>    
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Maintain products</a></li>
-                            <li><a href="#">Maintain customers</a></li>
-                            <li><a href="#">Maintain technicians</a></li>
-                            <li><a href="#">Display incidents</a></li>
-                            <li><a href="~/Administration/Index">Display customers</a></li>
-                            <li><a href="#">Display incidents by technician</a></li>
-                        </ul>
-                    </li>    
-    <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
-</ul>
+                            </ul>
+                        </li>
+                    }
+                    @if (User.IsInRole("Technician"))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Technician Support <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Display customer incidents</a></li>
+                                <li><a href="#">Update incidents</a></li>
+                            </ul>
+                        </li>
+                    }
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Maintain products</a></li>
+                                <li><a href="#">Maintain customers</a></li>
+                                <li><a href="#">Maintain technicians</a></li>
+                                <li><a href="#">Display incidents</a></li>
+                                <li><a href="~/Administration/Index">Display customers</a></li>
+                                <li><a href="#">Display incidents by technician</a></li>
+                            </ul>
+                        </li>
+                    }
+                    <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
+                </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
     <div class="jumbotron row-bottom-margin }">
-       <div style="clear:both;"  class="row .row-bottom-margin">
-            <div class="col-md-offset-1 col-md-5"><h1>SportsPro</h1>
+        <div style="clear:both;" class="row .row-bottom-margin">
+            <div class="col-md-offset-1 col-md-5">
+                <h1>SportsPro</h1>
             </div>
-      </div> @*End Row*@
-      <div class="row">
+        </div> @*End Row*@
+        <div class="row">
             <div class="col-md-4">
-              <img src="~/Images/logo.jpg" height="100" width="100" />
+                <img src="~/Images/logo.jpg" height="100" width="100" />
             </div>
             <div class="col-md-8">
-              <p>Sports management software for the sports enthusiast</p>
+                <p>Sports management software for the sports enthusiast</p>
             </div>
         </div> @*End Row*@
     </div> @*End Jumbotron*@
@@ -74,9 +85,10 @@
     </div>
     <div class="navbar navbar-custom navbar-fixed-bottom  text-center">
         @*@RenderSection("Footer", false)*@
-        
-        <span class="col-md-offset-1 col-md-11">To contact us, call us at 800-555-0400 or email us at <a href="mailto:sportspro@sportsprosoftware.com">sportspro@sportsprosoftware.com</a></span> </div>
-    
+
+        <span class="col-md-offset-1 col-md-11">To contact us, call us at 800-555-0400 or email us at <a href="mailto:sportspro@sportsprosoftware.com">sportspro@sportsprosoftware.com</a></span>
+    </div>
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
