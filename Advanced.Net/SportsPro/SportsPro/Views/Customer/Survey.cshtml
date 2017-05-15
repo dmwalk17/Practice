@@ -1,7 +1,8 @@
-﻿@model IEnumerable<SportsPro.Models.Incident>
+﻿
+@model IEnumerable<SportsPro.Models.Incident>
 
 @{
-    
+
     ViewBag.Title = "Survey";
 }
 
@@ -18,24 +19,24 @@
         <label>Please rate this incident by the following categories:</label>
     </div>
     <div class="row">
-            <label class="col-md-2">Response time:</label>
-            <label>
-                @Html.RadioButton("ResponseTime", 1)
-                Not satisfied
-            </label>
-            <label>
-                @Html.RadioButton("ResponseTime", 2)
-                Somewhat satisfied
-            </label>
-            <label>
-                @Html.RadioButton("ResponseTime", 3)
-                Satisfied
-            </label>
-            <label>
-                @Html.RadioButton("ResponseTime", 4)
-                Completely satisfied
-            </label>
-        </div>
+        <label class="col-md-2">Response time:</label>
+        <label>
+            @Html.RadioButton("ResponseTime", 1)
+            Not satisfied
+        </label>
+        <label>
+            @Html.RadioButton("ResponseTime", 2)
+            Somewhat satisfied
+        </label>
+        <label>
+            @Html.RadioButton("ResponseTime", 3)
+            Satisfied
+        </label>
+        <label>
+            @Html.RadioButton("ResponseTime", 4)
+            Completely satisfied
+        </label>
+    </div>
 
         <div class="row">
             <label class="col-md-2">Technical efficiency:</label>
@@ -80,9 +81,9 @@
         <div class="row">
             <label class="col-md-2">Additional comments:</label><textarea></textarea>
         </div>
-        
 
-        
+
+
 
 
 

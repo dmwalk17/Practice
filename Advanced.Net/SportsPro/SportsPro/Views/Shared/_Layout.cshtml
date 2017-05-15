@@ -22,9 +22,33 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customer Support <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Register products</a></li>
+                                <li><a href="~/Customer/Survey">Complete customer survey</a></li>
+                            </ul> 
+                    </li>   
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Technician Support <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Display customer incidents</a></li>
+                            <li><a href="#">Update incidents</a></li>
+                        </ul>
+                    </li>    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Maintain products</a></li>
+                            <li><a href="#">Maintain customers</a></li>
+                            <li><a href="#">Maintain technicians</a></li>
+                            <li><a href="#">Display incidents</a></li>
+                            <li><a href="~/Administration/Index">Display customers</a></li>
+                            <li><a href="#">Display incidents by technician</a></li>
+                        </ul>
+                    </li>    
+    <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
+</ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
