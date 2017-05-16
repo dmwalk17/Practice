@@ -7,7 +7,16 @@ namespace SportsPro.Models
 {
     public class CustomerList
     {
+        
         private List<Customer> customerList;
+
+        public static CustomerList myCustomerList
+        {
+                get;
+
+
+                set;
+        } 
 
         //Gets/sets the customer at the specified index;
         public Customer this[int index]
@@ -62,14 +71,15 @@ namespace SportsPro.Models
         public static CustomerList GetCustomers()
         {
  
-            if (System.Web.HttpContext.Current.Session["ContactList"] != null)
+            if (System.Web.HttpContext.Current.Session["CustomerList"] != null)
             {
 
-               //<List>Customer = System.Web.HttpContext.Current.Session["ContactList"];
+               myCustomerList = (CustomerList)HttpContext.Current.Session["CustomerList"];
             }
             else
             {
-               // HttpContext.Session["ContactList"] = new CustomerList();
+               //HttpContext.Session["CustomerList"] = new 
+               
             }
 
             return null;
@@ -90,7 +100,7 @@ namespace SportsPro.Models
         //Clears the list of customers
         public void Clear()
         {
-             //Session["CustomerList"] = null;
+            //HttpContext.Session["ContactList"] = null;
         }
 
     }

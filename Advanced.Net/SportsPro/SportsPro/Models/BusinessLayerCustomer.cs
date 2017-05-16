@@ -14,6 +14,7 @@ namespace SportsPro.Models
             get;         
                 
         }
+        public List<Incident> Incidents { get; set; }
 
         public void AddCustomer(Customer customer)
         {

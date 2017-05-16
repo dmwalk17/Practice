@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "Administration", FormMethod.Post, new { id = "TheForm" }))
+{
+    <div class="row">
+        <label class="col-md-offset-1 col-md-3">Select a customer:</label>
+        <span class="col-md-4">@Html.DropDownList("ddlCustomers", (SelectList)ViewBag.Customers, new { onchange = "this.form.submit();" }) </span>
+    </div><br /><br />
+}
+
+@*<table id="contractCoverablesGrid" width="600" align="center">
+    <tbody>
+        <tr>
+            @foreach (var coverableItem in Model.ContractCoverablesList)
+            {
+                <td>
+                    <div id="dataListItem">
+                        @Html.Hidden("coverableID", coverableItem.CoverID)
+                        @Html.Label(coverableItem.Name)
+                        <input type='checkbox' name="coverableItemCheckBox" id="coverableItemCheckBox" />
+                    </div>
+                </td>
+            }
+        </tr>
+    </tbody>
+</table>
+
+<style>
+    #dataListItem {
+        float: left;
+        font-weight: normal;
+    }
+</style>*@
+
