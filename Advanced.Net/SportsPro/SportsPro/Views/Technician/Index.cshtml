@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm("Index", "Administration", FormMethod.Post, new { id = "TheForm" }))
+@using (Html.BeginForm("Index", "Technician", FormMethod.Post, new { id = "TheForm" }))
 {
     <div class="row">
         <label class="col-md-offset-1 col-md-3">Select a customer:</label>
@@ -20,9 +20,13 @@
             <th>@ViewBag.Header3</th>
             <th>@ViewBag.Header4</th>
         </tr>
+
         <tr>
-            <td>My Data</td>
+
+            <td></td>
         </tr>
+      
+       
     </tbody>
 </table>
 
