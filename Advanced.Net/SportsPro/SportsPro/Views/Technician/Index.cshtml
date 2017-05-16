@@ -12,27 +12,20 @@
     </div><br /><br />
 }
 
-@*<table id="contractCoverablesGrid" width="600" align="center">
+<table id="CustomerIncidentDataList" class="table table-striped table-inverse">
     <tbody>
         <tr>
-            @foreach (var coverableItem in Model.ContractCoverablesList)
-            {
-                <td>
-                    <div id="dataListItem">
-                        @Html.Hidden("coverableID", coverableItem.CoverID)
-                        @Html.Label(coverableItem.Name)
-                        <input type='checkbox' name="coverableItemCheckBox" id="coverableItemCheckBox" />
-                    </div>
-                </td>
-            }
+            <th>@ViewBag.Header1</th>
+            <th>@ViewBag.Header2</th>
+            <th>@ViewBag.Header3</th>
+            <th>@ViewBag.Header4</th>
+        </tr>
+        <tr>
+            <td>My Data</td>
         </tr>
     </tbody>
 </table>
 
-<style>
-    #dataListItem {
-        float: left;
-        font-weight: normal;
-    }
-</style>*@
+
+
 
