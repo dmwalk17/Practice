@@ -30,15 +30,23 @@ namespace SportsPro.Controllers
         public ActionResult Index(string dummy)
         {
             dw_TechSupportDBContext db = new dw_TechSupportDBContext();
-            dw_TechSupportTechIncident db2 = new dw_TechSupportTechIncident();
+
+            var selectedCust = new Customer();
+ 
+            ViewData["SelectedItem"] = Request["ddlCustomers"];
             var getCustomerList = db.Customers.OrderBy(x => x.Name).ToList();
-            SelectList list = new SelectList(getCustomerList, "CustomerId", "Name");
+            SelectList list = new SelectList(getCustomerList, "CustomerId", "Name", ViewData["SelectedItem"]);
+            dw_TechSupportTechIncident db2 = new dw_TechSupportTechIncident();
+            var getIncidentList = db2.Incidents.OrderBy(x => x.DateOpened).ToList();
+            
+
 
             ViewBag.Customers = list;
             ViewBag.Header1 = "Product/Incident";
             ViewBag.Header2 = "Tech name";
             ViewBag.Header3 = "Opened";
             ViewBag.Header4 = "Closed";
+            ViewBag.Incidents = getIncidentList;
 
 
 
