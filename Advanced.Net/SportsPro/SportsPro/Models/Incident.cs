@@ -22,12 +22,8 @@ namespace SportsPro.Models
         public Nullable<System.DateTime> DateClosed { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-
-        public string CustomerIncidentDisplay()
-        {
-            string DisplayString = "Incident for product " + this.ProductCode + " closed " + this.DateClosed + " (" +
-                this.Title + ")";  
-            return DisplayString;
-          }
+    
+        public virtual Product Product { get; set; }
+        public virtual Technician Technician { get; set; }
     }
 }
