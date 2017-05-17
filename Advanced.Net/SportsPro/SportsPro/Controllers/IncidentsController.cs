@@ -33,24 +33,54 @@ namespace SportsPro.Controllers
 
             var selectedCust = new Customer();
  
-            ViewData["SelectedItem"] = Request["ddlCustomers"];
+            ViewBag.SelectedItem = Request["ddlCustomers"];
             var getCustomerList = db.Customers.OrderBy(x => x.Name).ToList();
-            SelectList list = new SelectList(getCustomerList, "CustomerId", "Name", ViewData["SelectedItem"]);
-            dw_TechSupportIncidents db2 = new dw_TechSupportIncidents();
-            var getIncidentList = db2.Incidents.OrderBy(x => x.DateOpened).ToList();
-            
-
-
+            SelectList list = new SelectList(getCustomerList, "CustomerId", "Name", ViewBag.SelectedItem);
             ViewBag.Customers = list;
             ViewBag.Header1 = "Product/Incident";
             ViewBag.Header2 = "Tech name";
             ViewBag.Header3 = "Opened";
             ViewBag.Header4 = "Closed";
-            ViewBag.Incidents = getIncidentList;
+            dw_TechSupportIncidentTechProd db2 = new dw_TechSupportIncidentTechProd();
+            List<Incident> incidentList = db2.Incidents.OrderBy(x => x.DateOpened).ToList();
+
+            IncidentViewModel incidentVM = new IncidentViewModel();
+
+            List<IncidentViewModel> incidentVMList = incidentList.Select(x=> new IncidentViewModel
+            { ProductCode = x.ProductCode,
+              ProductName =x.Product.Name,
+              TechID = x.TechID,
+              TechnicianName = x.Technician.Name,
+              DateOpened = x.DateOpened,
+              DateClosed = x.DateClosed,
+              Description = x.Description  }).ToList();
+            
 
 
 
-            return View();
+
+            
+
+
+
+            return View(incidentVMList);
+        }
+
+        public ActionResult Test()
+        {
+            dw_TechSupportIncidentTechProd db2 = new dw_TechSupportIncidentTechProd();
+            Incident incident = db2.Incidents.SingleOrDefault(x=>x.CustomerID==1010);
+            IncidentViewModel incidentVM = new IncidentViewModel();
+
+            incidentVM.CustomerID = incident.CustomerID;
+            incidentVM.ProductCode = incident.ProductCode;
+            incidentVM.TechID = incident.TechID;
+            incidentVM.DateOpened = incident.DateOpened;
+            incidentVM.DateClosed = incident.DateClosed;
+            incidentVM.Description = incident.Description;
+
+           
+            return View(incidentVM);
         }
     }
 }
