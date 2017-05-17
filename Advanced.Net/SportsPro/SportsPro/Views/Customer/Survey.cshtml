@@ -81,6 +81,28 @@
         <div class="row">
             <label class="col-md-2">Additional comments:</label><textarea></textarea>
         </div>
+        <div class="row">
+            <label class="col-md-3">
+            @Html.CheckBox("Contact", false)
+                Please contact me to discuss this incident
+            </label>
+        </div>
+        <div class="row">
+            <label class="col-md-offset-1 col-md-2">
+            @Html.RadioButton("ContactMethod", "Email")
+                Contact by email
+            </label>
+        </div>
+        <div class="row">
+            <label class="col-md-offset-1 col-md-2">
+            @Html.RadioButton("ContactMethod", "Phone")
+                Contact by phone
+            </label>
+        </div>
+        <div class="row">
+            @Html.ActionLink("Submit", "ProcessSurvey", null, new { @class = "btn btn-default myButtons2" })
+
+        </div>
 
 
 
