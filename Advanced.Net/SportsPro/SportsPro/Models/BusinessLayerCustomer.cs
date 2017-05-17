@@ -22,37 +22,50 @@ namespace SportsPro.Models
             
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-                SqlCommand cmd = new SqlCommand("spAddCustomer", con);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
-
-                SqlParameter paramName = new SqlParameter();
-                paramName.ParameterName = "@Name";
-                paramName.Value = customer.Name;
+                SqlCommand cmd = new SqlCommand("spAddCustomer", con)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
+                SqlParameter paramName = new SqlParameter()
+                {
+                    ParameterName = "@Name",
+                    Value = customer.Name
+                };
                 cmd.Parameters.Add(paramName);
 
-                SqlParameter paramAddress = new SqlParameter();
-                paramAddress.ParameterName = "@Address";
-                paramAddress.Value = customer.Address;
+                SqlParameter paramAddress = new SqlParameter()
+                {
+                    ParameterName = "@Address",
+                    Value = customer.Address
+                };
                 cmd.Parameters.Add(paramAddress);
 
-                SqlParameter paramCity = new SqlParameter();
-                paramCity.ParameterName = "@City";
-                paramCity.Value = customer.City;
+                SqlParameter paramCity = new SqlParameter()
+                {
+                    ParameterName = "@City",
+                    Value = customer.City
+                };
                 cmd.Parameters.Add(paramCity);
 
-                SqlParameter paramState = new SqlParameter();
-                paramState.ParameterName = "@State";
-                paramState.Value = customer.State;
+                SqlParameter paramState = new SqlParameter()
+                {
+                    ParameterName = "@State",
+                    Value = customer.State
+                };
                 cmd.Parameters.Add(paramState);
 
-                SqlParameter paramZipCode = new SqlParameter();
-                paramZipCode.ParameterName = "@ZipCode";
-                paramZipCode.Value = customer.ZipCode;
+                SqlParameter paramZipCode = new SqlParameter()
+                {
+                    ParameterName = "@ZipCode",
+                    Value = customer.ZipCode
+                };
                 cmd.Parameters.Add(paramZipCode);
 
-                SqlParameter paramEmail = new SqlParameter();
-                paramEmail.ParameterName = "@Email";
-                paramEmail.Value = customer.Email;
+                SqlParameter paramEmail = new SqlParameter()
+                {
+                    ParameterName = "@Email",
+                    Value = customer.Email
+                };
                 cmd.Parameters.Add(paramEmail);
 
                 con.Open();

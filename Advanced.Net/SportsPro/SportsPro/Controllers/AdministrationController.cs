@@ -98,7 +98,7 @@ namespace SportsPro.Controllers
                 {
                     Text = customer.Name,
                     Value = customer.CustomerID.ToString(),
-                    Selected = customer.IsSelected.HasValue ? customer.IsSelected.Value : false
+                    Selected = customer.IsSelected ?? false
                 };
                 selectListItems.Add(selectListItem);
             }
