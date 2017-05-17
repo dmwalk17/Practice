@@ -23,6 +23,11 @@ namespace SportsPro.Controllers
             return View();
         }
 
+        public ActionResult ProcessSurvey()
+        {
+            return View();
+        }
+
 
     }
 }
