@@ -204,7 +204,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
-    <Compile Include="Controllers\TechnicianController.cs" />
+    <Compile Include="Controllers\IncidentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -245,7 +245,7 @@
       <DependentUpon>Incident.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Incident.cs">
-      <DependentUpon>Technician.tt</DependentUpon>
+      <DependentUpon>Incidents.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Incident.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -257,30 +257,30 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Incident.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Incidents.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Incidents.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Incidents.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Incidents.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Incidents.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Incidents.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Product.cs">
-      <DependentUpon>Technician.tt</DependentUpon>
+      <DependentUpon>Incidents.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Survey.cs" />
-    <Compile Include="Models\Technician.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Technician.Context.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\IncidentViewModel.cs" />
     <Compile Include="Models\Technician.cs">
-      <DependentUpon>Technician.tt</DependentUpon>
+      <DependentUpon>Incidents.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Technician.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Technician.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Technician1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Technician.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TechnicianViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -317,15 +317,15 @@
       <DependentUpon>Incident.edmx</DependentUpon>
       <LastGenOutput>Incident1.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Technician.Context.tt">
+    <Content Include="Models\Incidents.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Technician.edmx</DependentUpon>
-      <LastGenOutput>Technician.Context.cs</LastGenOutput>
+      <DependentUpon>Incidents.edmx</DependentUpon>
+      <LastGenOutput>Incidents.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Technician.tt">
+    <Content Include="Models\Incidents.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Technician.edmx</DependentUpon>
-      <LastGenOutput>Technician1.cs</LastGenOutput>
+      <DependentUpon>Incidents.edmx</DependentUpon>
+      <LastGenOutput>Incidents.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -346,12 +346,12 @@
     <Content Include="Models\Incident.edmx.diagram">
       <DependentUpon>Incident.edmx</DependentUpon>
     </Content>
-    <EntityDeploy Include="Models\Technician.edmx">
+    <EntityDeploy Include="Models\Incidents.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Technician.Designer.cs</LastGenOutput>
+      <LastGenOutput>Incidents.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Technician.edmx.diagram">
-      <DependentUpon>Technician.edmx</DependentUpon>
+    <Content Include="Models\Incidents.edmx.diagram">
+      <DependentUpon>Incidents.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -411,7 +411,7 @@
     <Content Include="Views\Shared\_ContactList.cshtml" />
     <Content Include="Views\Administration\AddContact.cshtml" />
     <Content Include="Views\Customer\Survey.cshtml" />
-    <Content Include="Views\Technician\Index.cshtml" />
+    <Content Include="Views\Incidents\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
