@@ -42,18 +42,21 @@ namespace SportsPro.Controllers
             ViewBag.Header3 = "Opened";
             ViewBag.Header4 = "Closed";
             dw_TechSupportIncidentTechProd db2 = new dw_TechSupportIncidentTechProd();
-            List<Incident> incidentList = db2.Incidents.OrderBy(x => x.DateOpened).ToList();
 
+            List<Incident> incidentList = db2.Incidents.ToList();
+            
+            //List<Incident> custIncident = (List<Incident>)(db2.Incidents.Where(x=>x.CustomerID == Convert.ToInt32(Request["ddlCustomer"])));
             IncidentViewModel incidentVM = new IncidentViewModel();
 
             List<IncidentViewModel> incidentVMList = incidentList.Select(x=> new IncidentViewModel
-            { ProductCode = x.ProductCode,
+            { CustomerID = x.CustomerID,
+              ProductCode = x.ProductCode,
               ProductName =x.Product.Name,
               TechID = x.TechID,
               TechnicianName = x.Technician.Name,
               DateOpened = x.DateOpened,
               DateClosed = x.DateClosed,
-              Description = x.Description  }).ToList();
+              Description = x.Description}).ToList();
             
 
 
