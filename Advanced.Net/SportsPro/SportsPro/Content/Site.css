@@ -20,6 +20,12 @@ body {
     margin-bottom:0;
 }
 
+.myContacts {
+    border-color:black; 
+    border-width:8px; 
+    width:auto; 
+    height:auto;
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
   padding:4px;

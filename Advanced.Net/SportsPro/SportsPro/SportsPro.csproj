@@ -408,12 +408,12 @@
     <Content Include="Views\Roles\Create.cshtml" />
     <Content Include="Views\Roles\Edit.cshtml" />
     <Content Include="Views\Roles\ManageUsers.cshtml" />
-    <Content Include="Views\Shared\_ContactList.cshtml" />
     <Content Include="Views\Administration\AddContact.cshtml" />
     <Content Include="Views\Customer\Survey.cshtml" />
     <Content Include="Views\Incidents\Index.cshtml" />
     <Content Include="Views\Incidents\Test.cshtml" />
     <Content Include="Views\Customer\ProcessSurvey.cshtml" />
+    <Content Include="Views\Administration\_ContactView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
