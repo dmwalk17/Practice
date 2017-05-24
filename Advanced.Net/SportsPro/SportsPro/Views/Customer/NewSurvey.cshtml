@@ -11,8 +11,18 @@
     <div class="row">
         <label class="col-md-offset-1 col-md-3">Enter your customer ID:</label>
         <span class="col-md-4">@Html.TextBox("txtCustNumber") </span>@Html.ActionLink("Get Incidents", "GetIncidents", "Customer", null, new { @class = "btn btn-default myButtons2" })
+
     </div><br /><br />
-    <div class="Incidents" style="border-color:black; border-width: 5px; width:80%; height:20%">
+
+    if (Request["GetIncidents"] == null)
+    {
+        < script src = "~/Scripts/jquery-1.10.2.min.js" >
+        $(':radio,:checkbox').click(function(){
+        return false;
+        });
+        </ script >
+    }
+    <div class="Incidents" style="border-color:black; border-width: 5px; width:80%; height:20%;">
 
     </div><br /><br />
     <div class="row">
@@ -38,25 +48,25 @@
         </label>
     </div>
 
-        <div class="row">
-            <label class="col-md-2">Technical efficiency:</label>
-            <label>
-                @Html.RadioButton("TechEfficiency", 1)
-                Not satisfied
-            </label>
-            <label>
-                @Html.RadioButton("TechEfficiency", 2)
-                Somewhat satisfied
-            </label>
-            <label>
-                @Html.RadioButton("TechEfficiency", 3)
-                Satisfied
-            </label>
-            <label>
-                @Html.RadioButton("TechEfficiency", 4)
-                Completely satisfied
-            </label>
-        </div>
+    <div class="row">
+        <label class="col-md-2">Technical efficiency:</label>
+        <label>
+            @Html.RadioButton("TechEfficiency", 1)
+            Not satisfied
+        </label>
+        <label>
+            @Html.RadioButton("TechEfficiency", 2)
+            Somewhat satisfied
+        </label>
+        <label>
+            @Html.RadioButton("TechEfficiency", 3)
+            Satisfied
+        </label>
+        <label>
+            @Html.RadioButton("TechEfficiency", 4)
+            Completely satisfied
+        </label>
+    </div>
 
         <div class="row">
             <label class="col-md-2">Problem resolution:</label>
@@ -83,24 +93,24 @@
         </div>
         <div class="row">
             <label class="col-md-3">
-            @Html.CheckBox("Contact", false)
+                @Html.CheckBox("Contact", false)
                 Please contact me to discuss this incident
             </label>
         </div>
         <div class="row">
             <label class="col-md-offset-1 col-md-2">
-            @Html.RadioButton("ContactMethod", "Email")
+                @Html.RadioButton("ContactMethod", "Email")
                 Contact by email
             </label>
         </div>
         <div class="row">
             <label class="col-md-offset-1 col-md-2">
-            @Html.RadioButton("ContactMethod", "Phone")
+                @Html.RadioButton("ContactMethod", "Phone")
                 Contact by phone
             </label>
         </div>
         <div class="row">
-            @Html.ActionLink("Submit", "ProcessSurvey", null, new { @class = "btn btn-default myButtons2" })
+            @Html.ActionLink("Submit", "ExportToCSV", null, new { @class = "btn btn-default myButtons2" })
 
         </div>
 
