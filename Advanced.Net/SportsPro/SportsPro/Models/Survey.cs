@@ -33,5 +33,14 @@ namespace SportsPro.Models
 
         [Display(Name = "Contact By")]
         public string ContactBy { get; set; }
+
+        public static List<Survey> GenerateSurveyList()
+        {
+            List<Survey> surveys = new List<Survey>
+            {
+                new Survey{IncidentID = 1, ResponseTime = 2, TechEfficiency = 2, Resolution = 2, Comments = "", ContactBy = ""}
+            };
+            return surveys;
+        }
     }
 }
