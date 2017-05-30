@@ -56,10 +56,10 @@ namespace SportsPro.Controllers
                     survey.ContactBy));
 
                 Response.Write(sb.ToString());
-                Response.End();
+                
             }
             
-            RedirectToAction("ProcessSurvey");
+            RedirectToAction("ProcessSurvey", "Customer");
         }
 
 

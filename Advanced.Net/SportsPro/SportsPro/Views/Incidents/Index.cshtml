@@ -15,14 +15,13 @@
     <table id="CustomerIncidentDataList" class="table table-striped table-inverse">
    
         <tr>
-            <th>CustomerID</th>
-            <th>Product Code</th>
-            <th>Product Name</th>
-            <th>Tech ID</th>
+            
+            
+            <th>Product/Incident</th>
             <th>Tech Name</th>
             <th>Date Opened</th>
             <th>Date Closed</th>
-            <th>Description</th>
+            
 
         </tr>
         <tbody>
@@ -31,13 +30,13 @@
                 foreach (var item in Model)
                 {
                   <tr>
-                      <td>@item.CustomerID</td>
-                      <td>@item.ProductCode</td>
+                      @*<td>@item.CustomerID</td>
+                      <td>@item.ProductCode</td>*@
                     <td>@item.ProductName</td>
-                      <td>@item.TechID</td>
+                      @*<td>@item.TechID</td>*@
                     <td>@item.TechnicianName</td>
                     <td>@item.DateOpened</td>
-                    <td>@item.DateClosed</td>
+                    <td>@item.DateClosed</td><\n>
                     <td>@item.Description</td>
                   </tr>
                 }
