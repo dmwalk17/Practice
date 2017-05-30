@@ -48,15 +48,15 @@ namespace SportsPro.Controllers
             //List<Incident> custIncident = (List<Incident>)(db2.Incidents.Where(x=>x.CustomerID == Convert.ToInt32(Request["ddlCustomer"])));
             IncidentViewModel incidentVM = new IncidentViewModel();
 
-            List<IncidentViewModel> incidentVMList = incidentList.Select(x=> new IncidentViewModel
-            { CustomerID = x.CustomerID,
-              ProductCode = x.ProductCode,
-              ProductName =x.Product.Name,
-              TechID = x.TechID,
-              TechnicianName = x.Technician.Name,
-              DateOpened = x.DateOpened,
-              DateClosed = x.DateClosed,
-              Description = x.Description}).ToList();
+            //List<IncidentViewModel> incidentVMList = incidentList.Select(x=> new IncidentViewModel
+            //{ CustomerID = x.CustomerID,
+            //  ProductCode = x.ProductCode,
+            //  ProductName =x.Product.Name,
+            //  TechID = x.TechID,
+            //  TechnicianName = x.Technician.Name,
+            //  DateOpened = x.DateOpened,
+            //  DateClosed = x.DateClosed,
+            //  Description = x.Description}).ToList();
             
 
 
@@ -66,13 +66,13 @@ namespace SportsPro.Controllers
 
 
 
-            return View(incidentVMList);
+            return View(incidentList);
         }
 
-        public ActionResult Test()
+        public PartialViewResult _Index()
         {
             dw_TechSupportIncidentTechProd db2 = new dw_TechSupportIncidentTechProd();
-            Incident incident = db2.Incidents.SingleOrDefault(x=>x.CustomerID==1010);
+            Incident incident = db2.Incidents.SingleOrDefault(x=>x.CustomerID==12001);
             IncidentViewModel incidentVM = new IncidentViewModel();
 
             incidentVM.CustomerID = incident.CustomerID;
@@ -83,7 +83,7 @@ namespace SportsPro.Controllers
             incidentVM.Description = incident.Description;
 
            
-            return View(incidentVM);
+            return PartialView(incidentVM);
         }
     }
 }

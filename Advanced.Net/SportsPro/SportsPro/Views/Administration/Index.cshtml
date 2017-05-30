@@ -24,7 +24,7 @@
         <span class="col-md-4">@Html.Label("lblEmail", (string)ViewBag.Email)</span>
     </div><br />
     <div class="row">
-        <button class="myButtons2 col-md-offset-1 col-md-2" onclick="location.href='@Url.Action("Create", "Administration")';return false;">Add to Contact List</button>
+        <button class="myButtons2 col-md-offset-1 col-md-2" onclick="location.href='@Url.Action("AddContact", "Administration")';return false;">Add to Contact List</button>
         <button class="myButtons2 col-md-offset-1 col-md-2" onclick="location.href='@Url.Action("ContactList", "Administration")';return false;">Display Contact List</button>
     </div>
 }

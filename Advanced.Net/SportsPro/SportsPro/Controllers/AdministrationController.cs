@@ -60,19 +60,30 @@ namespace SportsPro.Controllers
                 }
             }
             ViewBag.Customers = list;
+            Customer CurrentCustomer = new Customer();
+            CurrentCustomer.CustomerID = Convert.ToInt32(ViewData["SelectedItem"]);
+            CurrentCustomer.Address = ViewBag.Address;
+            CurrentCustomer.City = ViewBag.City;
+            CurrentCustomer.State = ViewBag.State;
+            CurrentCustomer.ZipCode = ViewBag.Zip;
+            CurrentCustomer.Phone = ViewBag.Phone;
+            CurrentCustomer.Email = ViewBag.Email;
+            TempData["CurrentCustomer"] = CurrentCustomer;
             return View();
         }
 
-        public ViewResult AddContact()
+        public void AddContact()
         {
             try
             {
-
-                return View();
+                var MyCustomers = CustomerList.GetCustomers();
+                Customer CurrentCustomer = (Customer)TempData["CurrentCustomer"];
+                MyCustomers.AddItem(CurrentCustomer);
+                RedirectToAction("Index","Administration");
             }
             catch
             {
-                return View();
+                RedirectToAction("Index", "Administration");
             }
 
         }
