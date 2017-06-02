@@ -520,4 +520,3 @@ C:\Users\Donna\Documents\GitHub\Practice\Advanced.Net\SportsPro\SportsPro\obj\De
 C:\Users\Donna\Documents\GitHub\Practice\Advanced.Net\SportsPro\SportsPro\obj\Debug\SportsPro.Migrations.AddedNameFieldInTable.resources
 C:\Users\Donna\Documents\GitHub\Practice\Advanced.Net\SportsPro\SportsPro\obj\Debug\SportsPro.csproj.GenerateResource.Cache
 C:\Users\Donna\Documents\GitHub\Practice\Advanced.Net\SportsPro\SportsPro\obj\Debug\SportsPro.dll
-C:\Users\Donna\Documents\GitHub\Practice\Advanced.Net\SportsPro\SportsPro\obj\Debug\SportsPro.csprojResolveAssemblyReference.cache

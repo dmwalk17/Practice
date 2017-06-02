@@ -407,6 +407,7 @@
     <Content Include="Views\Incidents\Test.cshtml" />
     <Content Include="Views\Customer\ProcessSurvey.cshtml" />
     <Content Include="Views\Administration\_ContactView.cshtml" />
+    <Content Include="Views\Customer\ExportToCSV.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
