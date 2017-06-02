@@ -39,6 +39,7 @@ namespace SportsPro.Controllers
             sb.AppendLine ("\"Customer ID\",\"Incident ID\",\"Response Time\",\"Tech Efficiency\",\"Resolution\",\"Comments\",\"Contact By\"");
 
             Response.ClearContent();
+            Response.AddHeader("Refresh", "3; url=index.html");
             Response.AddHeader("content-disposition", "attachment;filename=ExportSurveyToFile.csv");
             Response.ContentType = "text/csv";
 
@@ -58,8 +59,11 @@ namespace SportsPro.Controllers
                 Response.Write(sb.ToString());
                 
             }
+            Response.AppendHeader("ProcessSurvey", "Customer");
+            Response.Flush();
+            Response.End();
             
-            RedirectToAction("ProcessSurvey", "Customer");
+
         }
 
 
