@@ -9,11 +9,12 @@ using Microsoft.AspNet.Identity;
 
 namespace SportsPro.Controllers
 {
-
+    [Authorize(Roles = "Administrator")]
     public class RolesController : Controller
     {
         private ApplicationDbContext context = new ApplicationDbContext();
         // GET: Roles
+        
         public ActionResult Index()
         {
             return View(context.Roles.ToList());
@@ -25,7 +26,7 @@ namespace SportsPro.Controllers
             return View();
 
         }
-
+        
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -46,6 +47,7 @@ namespace SportsPro.Controllers
             }
         }
 
+        
         public ActionResult Delete(string RoleName)
         {
             var thisRole = context.Roles.Where(r => r.Name.Equals(RoleName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
@@ -61,6 +63,7 @@ namespace SportsPro.Controllers
             return View(thisRole);
         }
 
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(IdentityRole role)
@@ -77,6 +80,7 @@ namespace SportsPro.Controllers
             }
         }
 
+        
         public ActionResult ManageUsers()
         {
             var list = context.Roles.OrderBy(r => r.Name).ToList().Select(rr =>
@@ -85,6 +89,7 @@ namespace SportsPro.Controllers
             return View();
         }
 
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult RoleAddToUser(string UserName, string RoleName)
@@ -100,6 +105,7 @@ namespace SportsPro.Controllers
             return View("ManageUsers");
         }
 
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult GetRoles(string UserName)
@@ -118,6 +124,7 @@ namespace SportsPro.Controllers
             return View("ManageUsers");
         }
 
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteRoleForUser(string UserName, string RoleName)
@@ -137,7 +144,7 @@ namespace SportsPro.Controllers
 
             }
 
-            var list = context.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToString();
+            var list = context.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name });
             ViewBag.Roles = list;
 
             return View("ManageUsers");
