@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace SportsPro.Controllers
 {
+    [Authorize(Roles = "Customer")]
     public class CustomerController : Controller
     {
 

@@ -7,6 +7,7 @@ using SportsPro.Models;
 
 namespace SportsPro.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class AdministrationController : Controller
     {
 
@@ -15,6 +16,7 @@ namespace SportsPro.Controllers
         {
 
             var selectedCust = new Customer();
+
             dw_TechSupportDBContext db = new dw_TechSupportDBContext();
             ViewData["SelectedItem"] = Request["ddlCustomers"];
             var getCustomerList = db.Customers.OrderBy(x => x.Name).ToList();
@@ -74,12 +76,16 @@ namespace SportsPro.Controllers
 
         public void AddContact()
         {
+            CustomerList MyCustomers = new CustomerList();
             try
             {
-                var MyCustomers = CustomerList.GetCustomers();
-                Customer CurrentCustomer = (Customer)TempData["CurrentCustomer"];
-                MyCustomers.AddItem(CurrentCustomer);
-                RedirectToAction("Index","Administration");
+                if (CustomerList.GetCustomers() != null)
+                {
+                    MyCustomers = CustomerList.GetCustomers();
+                    Customer CurrentCustomer = (Customer)TempData["CurrentCustomer"];
+                    MyCustomers.AddItem(CurrentCustomer);
+                }
+                    RedirectToAction("Index","Administration");
             }
             catch
             {

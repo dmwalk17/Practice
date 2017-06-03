@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace SportsPro.Controllers
 {
+    [Authorize(Roles = "Technician")]
     public class IncidentsController : Controller
     {
         // GET: Technician
