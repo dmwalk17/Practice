@@ -25,5 +25,11 @@ namespace SportsPro.Models
     
         public virtual Product Product { get; set; }
         public virtual Technician Technician { get; set; }
+
+        public static string CustomerIncidentDisplay(IncidentViewModel IncidentVM)
+        {
+
+            return "Incident for product " + IncidentVM.ProductName + " closed " + IncidentVM.DateClosed + " (" + IncidentVM.Description + ")";
+        }
     }
 }

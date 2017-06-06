@@ -99,5 +99,16 @@ th{
     max-width: 240px;
 }
 
+#CustomerIncidentDataList {
+    /*display: block;*/
+}
+
+#CustomerIncidentDataList td {
+    /*display: inline-block;
+    min-width: 200px;*/
+}
+  
+
+
 
   
