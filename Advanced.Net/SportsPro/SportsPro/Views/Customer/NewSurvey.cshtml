@@ -1,5 +1,5 @@
 ﻿
-@model IEnumerable<SportsPro.Models.Incident>
+@model  IEnumerable<SportsPro.Models.IncidentViewModel>
 
 @{
 
@@ -14,17 +14,19 @@
 
     </div><br /><br />
 
-    @*if (Request["GetIncidents"] == null)
-    {
-        < script src = "~/Scripts/jquery-1.10.2.min.js" >
-        $(':radio,:checkbox').click(function(){
-        return false;
-        });
-        </ script >
-    }*@
-    <div class="Incidents" style="border-color:black; border-width: 5px; width:80%; height:20%;">
+    @Html.ListBox("ClosedIncidents")
+    
+        if (Model != null)
+        {
+        foreach (var item in Model)
+        {
 
-    </div><br /><br />
+            @*START HERE but need to create selectList in controller instead of sending viewmodel*@
+        }
+
+        }
+
+  <br /><br />
     <div class="row">
         <label>Please rate this incident by the following categories:</label>
     </div>
@@ -68,25 +70,25 @@
         </label>
     </div>
 
-        <div class="row">
-            <label class="col-md-2">Problem resolution:</label>
-            <label>
-                @Html.RadioButton("Resolution", 1)
-                Not satisfied
-            </label>
-            <label>
-                @Html.RadioButton("Resolution", 2)
-                Somewhat satisfied
-            </label>
-            <label>
-                @Html.RadioButton("Resolution", 3)
-                Satisfied
-            </label>
-            <label>
-                @Html.RadioButton("Resolution", 4)
-                Completely satisfied
-            </label>
-        </div>
+    <div class="row">
+        <label class="col-md-2">Problem resolution:</label>
+        <label>
+            @Html.RadioButton("Resolution", 1)
+            Not satisfied
+        </label>
+        <label>
+            @Html.RadioButton("Resolution", 2)
+            Somewhat satisfied
+        </label>
+        <label>
+            @Html.RadioButton("Resolution", 3)
+            Satisfied
+        </label>
+        <label>
+            @Html.RadioButton("Resolution", 4)
+            Completely satisfied
+        </label>
+    </div>
 
         <div class="row">
             <label class="col-md-2">Additional comments:</label><textarea></textarea>

@@ -49,42 +49,29 @@ namespace SportsPro.Controllers
             //List<Incident> custIncident = (List<Incident>)(db2.Incidents.Where(x=>x.CustomerID == Convert.ToInt32(Request["ddlCustomer"])));
             IncidentViewModel incidentVM = new IncidentViewModel();
 
-            //List<IncidentViewModel> incidentVMList = incidentList.Select(x=> new IncidentViewModel
-            //{ CustomerID = x.CustomerID,
-            //  ProductCode = x.ProductCode,
-            //  ProductName =x.Product.Name,
-            //  TechID = x.TechID,
-            //  TechnicianName = x.Technician.Name,
-            //  DateOpened = x.DateOpened,
-            //  DateClosed = x.DateClosed,
-            //  Description = x.Description}).ToList();
-            
+
+            //April Hauk assisted with the need and location placement by providing a general example of a join in mvc
+
+            List<IncidentViewModel> incidentVMList = (from incident in db2.Incidents
+                                                        join technician in db2.Technicians on incident.TechID equals technician.TechID 
+                                                        join product in db2.Products on incident.ProductCode equals product.ProductCode 
+                                                        select new IncidentViewModel
+                                                        {
+                                                            CustomerID = incident.CustomerID,
+                                                            ProductCode = incident.ProductCode,
+                                                            ProductName = incident.Product.Name,
+                                                            TechID = incident.TechID,
+                                                            TechnicianName = incident.Technician.Name,
+                                                            DateOpened = incident.DateOpened,
+                                                            DateClosed = incident.DateClosed,
+                                                            Description = incident.Description
+                                                        }).ToList();
+
+            return View(incidentVMList);
 
 
-
-
-            
-
-
-
-            return View(incidentList);
         }
 
-        public PartialViewResult _Index()
-        {
-            dw_TechSupportIncidentTechProd db2 = new dw_TechSupportIncidentTechProd();
-            Incident incident = db2.Incidents.SingleOrDefault(x=>x.CustomerID==12001);
-            IncidentViewModel incidentVM = new IncidentViewModel();
 
-            incidentVM.CustomerID = incident.CustomerID;
-            incidentVM.ProductCode = incident.ProductCode;
-            incidentVM.TechID = incident.TechID;
-            incidentVM.DateOpened = incident.DateOpened;
-            incidentVM.DateClosed = incident.DateClosed;
-            incidentVM.Description = incident.Description;
-
-           
-            return PartialView(incidentVM);
-        }
     }
 }

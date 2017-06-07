@@ -23,8 +23,46 @@ namespace SportsPro.Controllers
         [HttpPost]
         public ActionResult NewSurvey(string dummy)
         {
-            return View();
+            ViewBag.CustomerID = Convert.ToInt32(Request["txtCustomerNumber"]);
+            dw_TechSupportIncidentTechProd db2 = new dw_TechSupportIncidentTechProd();
+            IncidentViewModel incidentVM = new IncidentViewModel();
+
+
+
+
+            List<IncidentViewModel> IncidentVMList = (from incident in db2.Incidents
+                                                      join technician in db2.Technicians on incident.TechID equals technician.TechID
+                                                      join product in db2.Products on incident.ProductCode equals product.ProductCode
+                                                      select new IncidentViewModel
+                                                      {
+                                                          CustomerID = incident.CustomerID,
+                                                          ProductCode = incident.ProductCode,
+                                                          ProductName = incident.Product.Name,
+                                                          TechID = incident.TechID,
+                                                          TechnicianName = incident.Technician.Name,
+                                                          DateOpened = incident.DateOpened,
+                                                          DateClosed = incident.DateClosed,
+                                                          Description = incident.Description
+                                                      }).ToList();
+
+            List<SelectList> IncidentList = new List<SelectList>();
+            if (ViewBag.CustomerId != null)
+            {
+                foreach(var item in IncidentVMList)
+                {
+                    if(item.DateClosed != null)
+                    {
+                       
+                    }
+                }
+            }
+
+            
+
+            return View(incidentVMList);
         }
+
+
 
         public ActionResult ProcessSurvey()
         {

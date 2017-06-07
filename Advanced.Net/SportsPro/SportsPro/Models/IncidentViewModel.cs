@@ -20,5 +20,7 @@ namespace SportsPro.Models
         public string ProductName { get; set; }
         public string TechnicianName { get; set; }
 
+
+
     }
 }
