@@ -45,66 +45,70 @@ namespace SportsPro.Controllers
                                                           Description = incident.Description
                                                       }).ToList();
 
-            List<SelectList> IncidentList = new List<SelectList>();
+            //var IncidentItems = IncidentVMList.ToSelectList(d => "Incident for product + d.ProductName +
+            //                                    " closed " + d.DateClosed + "(" + d.Description + ")",
+            //                                    d => d.Id.ToString(),
+            //                                    " - ");
+
             if (ViewBag.CustomerId != null)
             {
-                foreach(var item in IncidentVMList)
+                foreach (var item in IncidentVMList)
                 {
-                    if(item.DateClosed != null)
+                    if (item.DateClosed != null && item.CustomerID == ViewBag.CustomerId)
                     {
-                       
+                        //IncidentList.Add("Incident for product" + item.ProductName + "closed" + item.DateClosed + "(" + item.Description + ")");
+
+
+                        
                     }
+
                 }
             }
-
-            
-
-            return View(incidentVMList);
+            return View(IncidentVMList);
         }
 
-
-
-        public ActionResult ProcessSurvey()
-        {
-            
-
-            return View();
-        }
-
-        public void ExportToCSV()
-        {
-            //StringBuilder has Append option.
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine ("\"Customer ID\",\"Incident ID\",\"Response Time\",\"Tech Efficiency\",\"Resolution\",\"Comments\",\"Contact By\"");
-
-            Response.ClearContent();
-            Response.AddHeader("Refresh", "3; url=index.html");
-            Response.AddHeader("content-disposition", "attachment;filename=ExportSurveyToFile.csv");
-            Response.ContentType = "text/csv";
-
-            var surveys = Survey.GenerateSurveyList();
-
-            foreach (var survey in surveys)
+            public ActionResult ProcessSurvey()
             {
-                sb.AppendLine(string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\"",
-                    survey.CustomerID,
-                    survey.IncidentID,
-                    survey.ResponseTime,
-                    survey.TechEfficiency,
-                    survey.Resolution,
-                    survey.Comments,
-                    survey.ContactBy));
 
-                Response.Write(sb.ToString());
-                
+
+                return View();
             }
-            Response.AppendHeader("ProcessSurvey", "Customer");
-            Response.Flush();
-            Response.End();
-            
 
+            public void ExportToCSV()
+            {
+                //StringBuilder has Append option.
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine("\"Customer ID\",\"Incident ID\",\"Response Time\",\"Tech Efficiency\",\"Resolution\",\"Comments\",\"Contact By\"");
+
+                Response.ClearContent();
+                Response.AddHeader("Refresh", "3; url=index.html");
+                Response.AddHeader("content-disposition", "attachment;filename=ExportSurveyToFile.csv");
+                Response.ContentType = "text/csv";
+
+                //var surveys = Survey.GenerateSurveyList();
+
+                //foreach (var survey in surveys)
+                //{
+                //    sb.AppendLine(string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\"",
+                //        survey.CustomerID,
+                //        survey.IncidentID,
+                //        survey.ResponseTime,
+                //        survey.TechEfficiency,
+                //        survey.Resolution,
+                //        survey.Comments,
+                //        survey.ContactBy));
+
+                //    Response.Write(sb.ToString());
+
+                //}
+                Response.AppendHeader("ProcessSurvey", "Customer");
+                Response.Flush();
+                Response.End();
+
+
+            }
         }
-
-
     }
-}
+
+
+
