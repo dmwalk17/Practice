@@ -21,7 +21,11 @@
         foreach (var item in Model)
         {
 
-            @*START HERE but need to create selectList in controller instead of sending viewmodel*@
+            if(item.CustomerID == ViewBag.CustomerId){
+                //Still needed to figure out how to make a select list made of string with item ProductName, CloseDate and Description mixed in with the string 
+                //so the customer could select the product to review
+                //"Incident for product" + item.ProductName + " closed " + item.DateClosed + "(" + item.Description + ")" 
+        }
         }
 
         }
@@ -33,19 +37,19 @@
     <div class="row">
         <label class="col-md-2">Response time:</label>
         <label>
-            @Html.RadioButton("ResponseTime", 1)
+            @Html.RadioButton("ResponseTime", 1, new { disabled = "disabled" })
             Not satisfied
         </label>
         <label>
-            @Html.RadioButton("ResponseTime", 2)
+            @Html.RadioButton("ResponseTime", 2, new { disabled = "disabled" })
             Somewhat satisfied
         </label>
         <label>
-            @Html.RadioButton("ResponseTime", 3)
+            @Html.RadioButton("ResponseTime", 3, new { disabled = "disabled" })
             Satisfied
         </label>
         <label>
-            @Html.RadioButton("ResponseTime", 4)
+            @Html.RadioButton("ResponseTime", 4, new { disabled = "disabled" })
             Completely satisfied
         </label>
     </div>
@@ -53,19 +57,19 @@
     <div class="row">
         <label class="col-md-2">Technical efficiency:</label>
         <label>
-            @Html.RadioButton("TechEfficiency", 1)
+            @Html.RadioButton("TechEfficiency", 1, new { disabled = "disabled" })
             Not satisfied
         </label>
         <label>
-            @Html.RadioButton("TechEfficiency", 2)
+            @Html.RadioButton("TechEfficiency", 2, new { disabled = "disabled" })
             Somewhat satisfied
         </label>
         <label>
-            @Html.RadioButton("TechEfficiency", 3)
+            @Html.RadioButton("TechEfficiency", 3, new { disabled = "disabled" })
             Satisfied
         </label>
         <label>
-            @Html.RadioButton("TechEfficiency", 4)
+            @Html.RadioButton("TechEfficiency", 4, new { disabled = "disabled" })
             Completely satisfied
         </label>
     </div>
@@ -73,19 +77,19 @@
     <div class="row">
         <label class="col-md-2">Problem resolution:</label>
         <label>
-            @Html.RadioButton("Resolution", 1)
+            @Html.RadioButton("Resolution", 1, new { disabled = "disabled" })
             Not satisfied
         </label>
         <label>
-            @Html.RadioButton("Resolution", 2)
+            @Html.RadioButton("Resolution", 2, new { disabled = "disabled" })
             Somewhat satisfied
         </label>
         <label>
-            @Html.RadioButton("Resolution", 3)
+            @Html.RadioButton("Resolution", 3, new { disabled = "disabled" })
             Satisfied
         </label>
         <label>
-            @Html.RadioButton("Resolution", 4)
+            @Html.RadioButton("Resolution", 4, new { disabled = "disabled" })
             Completely satisfied
         </label>
     </div>
@@ -95,13 +99,13 @@
         </div>
         <div class="row">
             <label class="col-md-3">
-                @Html.CheckBox("Contact", false)
+                @Html.CheckBox("Contact", false, new { disabled = "disabled" })
                 Please contact me to discuss this incident
             </label>
         </div>
         <div class="row">
             <label class="col-md-offset-1 col-md-2">
-                @Html.RadioButton("ContactMethod", "Email")
+                @Html.RadioButton("ContactMethod", "Email", new { disabled = "disabled" })
                 Contact by email
             </label>
         </div>
