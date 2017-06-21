@@ -1,0 +1,144 @@
+============================================================
+BigData Analytics & Hadoop - Training - Session 2
+============================================================
+
+Trainer Name - Prashant Shantigrama
+Email ID - prashanth.grama@hotmail.com
+
+
+
+To perform analytics ...... a system should have
+---> System should accepts all kinds data ( even garbage !!! value of the data not yet realized )
+---> System should NOT have any treshold limits ( like how Oracle has 12TB limit )
+---> System should be able process all kinds of data 
+
+To achieve these objectives ........ we use Hadoop !!!!
+
+Hadoop is a java based framework which is used to handle BigData....
+
+---> Hadoop uses ELT strategy ( Load the data and then only perform transformations --- schema on read )
+---> Hadoop capabilities is directly proportional to the hardware capability
+---> Hadoop provides API and processing framework to process any kinds of data (Unstructured Data)
+
+---> Hadoop does NOT support updates to the data (Data is immutable)
+---> Hadoop is NOT meant to perform OLTP (Online Transaction Processing)
+---> Hadoop is meant for OLAP (Online Analytical Processing)
+
+
+Data Injestion
+Data Lake ---------- Hadoop clusters
+Data Science 
+Data Visualization/Access
+
+
+Hadoop provides a great feature ----- "Scalability"
+
+Scalability ---- upgrading / downgrading hardware resources without affecting current operations
+
+1) Vertical scalability (Scale-up)  --- all about upgrading/downgrading your physical machines
+
+	--- upper limit for a single physical system
+	--- Dependent on vendor specification
+	--- Downtime is introduced
+
+2) Horizontal scalability (Scale-out) --- adding / removing machines from a cluster
+
+	--- multiple machines forming a cluster, logically acting as a single system
+	--- achieve distributed storage
+	--- add / removing nodes (machines) from the cluster without introducing any downtime
+
+Hadoop is horizontally scalable system which provides high availability and high fault tolerance ----- on a cluster of machines which is made up of commodity machines
+
+Hadoop offers distributed storage and distributed processing capabilities for BigData
+Hadoop is open-source project modeled after Google's GFS (Google File System) architecture
+
+Hadoop Generations
+==================
+
+Gen 1 ------ stable version ------ hadoop 1.2.1
+Gen 2 ------ stable version ------ hadoop 2.4.1
+
+For Batch processing
+70% ----- Gen1
+30% ----- Gen2
+
+For Real-time processing 
+85% ---- Gen 2
+15% ---- Gen 1
+
+
+Batch Processing
+================
+
+1. Collect the data
+Source (Twitter) -------> Get the Feeds (Flume) -----> Hadoop Storage
+
+2. Transform the data based on the OLAP tools and analytical requirements
+Hadoop Storage ------> Hadoop processing (transformations) (Pig/Hive/MapReduce) ------> Hadoop Storage
+
+3. Complete the analysis using OLAP tools
+Hadoop Storage (Transformed data) -----> OLAP processing (R/Python/Spark/Mahout/SAS) ----> Hadoop Storage
+
+4. Data visualization
+Hadoop Storage ------> Reporting tools (Tablueau, Qlikview, R, Zepplin, Kibana) -----> Reports
+
+
+Real-time processing
+====================
+
+Source (Twitter) ----> MessageBroker tools (kafka, RabbitMQ) ----> Real time processing applications (Spark/Storm/Flink) (transformations) ----> Machine Learning Models ( R, Python, SparkML) ----> Data Visualizations (Zepplin/WebApplication) ----> DataStorage ( Hadoop/HBase/Hive/NoSQL databases )
+
+Hadoop --- 2 parts
+==================
+
+1. Storage -------------> HDFS (Hadoop Distributed File System)
+2. Processing ----------> MapReduce (Hadoop Distributed Application Framework) (Gen1)
+			  YARN (Yet Another Resource Negotiator) (Gen2)
+
+
+Hadoop Criteria  (requirements to work on hadoop)
+===============
+
+1) Linux OS (Kernel version 2.6x and above)
+2) Java (JDK version 6.x or later)
+
+
+Hadoop Distributions
+====================
+
+Apache Hadoop --------- Apache ---------- Opensource -------- Free (No Support)
+
+Inhouse Hadoop Clusters
+-----------------------
+Cloudera Hadoop
+HDP - Hortanworks Data Platform
+MapR Hadoop
+
+Cloud based offerings
+---------------------
+Elastic MapReduce --------- Amazon
+HD Insights --------------- Microsoft
+BigInsights --------------- IBM
+Oracle
+
+Tools & Software to setup the Lab
+=================================
+
+1. VMWare workstation (ver 11 or later) / Oracle Virtual Box / VMWare Fusion
+
+	https://my.vmware.com/web/vmware/details?productId=462&downloadGroup=WKST-1112-WIN
+	http://appnee.com/vmware-workstation-11-x-universal-license-keys-for-windows-linux/
+
+2. Linux OS (Ubuntu 14.04 LTS Server version) ---- (shared in my google drive / Ubuntu)
+	Download the iso image file
+
+3. Java OpenJDK
+
+4. WinSCP -or- FileZilla ---- (Transfer the files from local machine to virtual machines)
+
+5. Putty ---- access linux terminals from windows
+
+Link to my google drive
+=======================
+
+https://drive.google.com/drive/folders/0BxSW9UUny9nsflA5dlpITWdOZ0taRVdvN1B4OUgwRXp2QnlOU0s3U0dLaGdqdmdCbFFCTVE?usp=sharing
