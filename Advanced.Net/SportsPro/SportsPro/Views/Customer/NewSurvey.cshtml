@@ -13,24 +13,25 @@
         <span class="col-md-4">@Html.TextBox("txtCustNumber") </span>@Html.ActionLink("Get Incidents", "GetIncidents", "Customer", null, new { @class = "btn btn-default myButtons2" })
 
     </div><br /><br />
+    //Commented out to allow gui to be seen
+    //   @Html.ListBox("GetIncidents")
 
-    @Html.ListBox("ClosedIncidents")
-    
-        if (Model != null)
-        {
+    if (Model != null)
+    {
         foreach (var item in Model)
         {
 
-            if(item.CustomerID == ViewBag.CustomerId){
-                //Still needed to figure out how to make a select list made of string with item ProductName, CloseDate and Description mixed in with the string 
+            if (item.CustomerID == ViewBag.CustomerId)
+            {
+                //Still needed to figure out how to make a select list made of string with item ProductName, CloseDate and Description mixed in with the string
                 //so the customer could select the product to review
-                //"Incident for product" + item.ProductName + " closed " + item.DateClosed + "(" + item.Description + ")" 
-        }
-        }
-
+                //"Incident for product" + item.ProductName + " closed " + item.DateClosed + "(" + item.Description + ")"
+            }
         }
 
-  <br /><br />
+    }
+
+    <br /><br />
     <div class="row">
         <label>Please rate this incident by the following categories:</label>
     </div>
@@ -94,9 +95,9 @@
         </label>
     </div>
 
-        <div class="row">
-            <label class="col-md-2">Additional comments:</label><textarea></textarea>
-        </div>
+    <div class="row">
+        <label class="col-md-2">Additional comments:</label><textarea></textarea>
+    </div>
         <div class="row">
             <label class="col-md-3">
                 @Html.CheckBox("Contact", false, new { disabled = "disabled" })

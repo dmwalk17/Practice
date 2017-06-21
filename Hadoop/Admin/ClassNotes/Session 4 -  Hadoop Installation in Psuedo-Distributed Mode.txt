@@ -1,0 +1,321 @@
+============================================================
+BigData Analytics & Hadoop - Training - Session 4
+============================================================
+
+Trainer Name - Prashant Shantigrama
+Email ID - prashanth.grama@hotmail.com
+
+
+Tools & Software to setup the Lab
+=================================
+
+1. VMWare workstation (ver 11 or later) / Oracle Virtual Box / VMWare Fusion
+
+	https://my.vmware.com/web/vmware/details?productId=462&downloadGroup=WKST-1112-WIN
+	http://appnee.com/vmware-workstation-11-x-universal-license-keys-for-windows-linux/
+
+2. Linux OS (Ubuntu 14.04 LTS Server version) ---- (shared in my google drive / Ubuntu)
+	Download the iso image file
+
+3. Java OpenJDK
+
+4. WinSCP -or- FileZilla ---- (Transfer the files from local machine to virtual machines)
+
+5. Putty ---- access linux terminals from windows
+
+Link to my google drive
+=======================
+
+https://drive.google.com/drive/folders/0BxSW9UUny9nsflA5dlpITWdOZ0taRVdvN1B4OUgwRXp2QnlOU0s3U0dLaGdqdmdCbFFCTVE?usp=sharing
+
+
+Hadoop Installation Steps
+=========================
+
+1. Install VMWare workstation (or equivalents) and start it
+
+2. Create a new virtual machine
+
+	1. Select "typical installation option"
+	2. Select option "I will Install operating system later
+	3. Select a name for the virtual machine .......... JuneHadoopBatch
+	4. Select "20gb" maximum harddisk allocation
+	5. Select option "Store virtual disk as single file"
+	6. Increased RAM allocation to this VM
+	7. Select "CD/DVD" option to point to Ubuntu Server iso image file (Which you would have downloaded into your machine)
+	Finish
+
+	These steps created a blank virtual machine
+
+3. Install Ubuntu Server in this virtual machine
+
+	1. Power-on the virtual machine
+
+	Important screens (menu options) during ubuntu installation process
+
+	1. Do NOT select Keyboard detection
+	2. Host Name ...... select "hadoop" as the host machine
+	3. User Name ...... select "hadoop" as the user name
+	4. Password ...... select "123456" as the password
+	5. DO NOT ENCRYPT your home directory
+	6. Partitioning the Disk .... Select "Guided disk option" ..... first option
+	7. Select "save changes to the disk" .... YES
+	8. HTTP proxy information..... leave it blank
+	9. Managing Upades ...... No automatic updates
+	10. Softwares to Install ...... OpenSSH server
+	11. Install GRUB boot loader .... YES
+
+	Now your Ubuntu installation is complete....login to your VM using username "hadoop" and password "123456"
+
+
+	Check the ipaddress of your new VM
+
+	ifconfig ......... 192.168.11.170
+
+4. Update the OS
+
+	sudo apt-get update
+
+5. Install OpenSSH Server ( In case you missed this step during Ubuntu installation )
+
+	sudo apt-get install openssh-server
+
+6. Install Java ( OpenJDK 7 )
+
+	 sudo apt-get install openjdk-7-jdk
+
+	verify the java installation 
+
+	java -version
+
+
+7. Download hadoop and place it in your VM
+
+	wget http://apache.mirrors.tds.net/hadoop/common/hadoop-1.2.1/hadoop-1.2.1.tar.gz	
+
+				-or-
+
+	Use WinSCP to transfer the file from your local machine into your VM
+
+8. Extract the tar file
+
+	tar -xvzf hadoop-1.2.1.tar.gz
+
+
+9. Copy the contents of the extracted folder hadoop-1.2.1 into the location /usr/local/hadoop
+
+
+Directory Conventions
+---------------------
+
+
+			Windows					Linux
+			--------				------
+
+Root Dir		C:\					/
+
+Softwares 		C:\Program Files			/bin
+
+Framework		C:\Windows\System32			/usr/local
+
+	sudo cp -r hadoop-1.2.1 /usr/local/hadoop
+
+
+10. Inform System (Linux) where is Hadoop
+
+	sudo vi /home/hadoop/.bashrc
+
+{ to edit the file in vi editor ..... press "INSERT" }
+
+	export HADOOP_PREFIX=/usr/local/hadoop
+	export PATH=$PATH:$HADOOP_PREFIX/bin
+
+{ To save the file and quit the editor ..... press "ESC" :wq }
+
+
+11. Update the bash settings
+
+	exec bash
+
+
+12. Inform Hadoop where is Java installed on your system
+
+	sudo vi /usr/local/hadoop/conf/hadoop-env.sh
+
+	uncomment the line by deleting '#' in the line JAVA_HOME.... then update the java path
+
+{ to edit the file in vi editor ..... press "INSERT" }
+
+	export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-i386
+
+{ To save the file and quit the editor ..... press "ESC" :wq }
+
+
+
+At this stage ......... You have successfully installed Hadoop in Standalone Mode
+=================================================================================
+
+
+Hadoop Services (Daemons)
+===============
+
+HDFS
+=====
+1) NameNode ----- Master
+2) DataNode ----- Slave
+
+MapReduce (Gen1)				  YARN (Yet Another Resource Negotiator)  (Gen2)
+=========					  ======================================
+3) JobTracker -------------- Master ------------- ResourceManager
+4) TaskTracker ------------- Slave -------------- NodeManager
+
+Checkpoint Service
+===================
+5) SecondaryNameNode
+
+
+Hadoop Execution Modes
+======================
+
+1) Standalone mode
+	- All 5 Hadoop services run on a single node (machine) and within single JVM (single process)
+	- HDFS (Hadoop Distributed File System) is NOT present
+	- Hadoop uses local file system (Linux)
+
+2) Psuedo-Distributed mode
+	- All 5 Hadoop services run on single node BUT on Separate JVM (Processes)
+	- HDFS is present
+
+3) Fully-Distributed mode
+	- Master ( NameNode, JobTracker/ResourceManager ) and Checkpoint Service (SecondaryNameNode) and Slave Services (DataNode, TaskTracker/NodeManager) run on seperate nodes togather forming a Hadoop cluster
+	- Master Services (NN, JT/RM) run a dedicated node called NameNode server (dedicated means - no other hadoop services can be started on this node)
+	- Checpoint Service (SNN) run a dedicated node called Checkpoint Server
+	- There can be only one set of Master Services and Checkpoint Service in a Hadoop cluster
+	- One pair of slave services (DN, TT/NM) run on each of the worker nodes in the Hadoop cluster
+
+
+Setup Hadoop in Psuedo-Distributed Mode
+=======================================
+
+In Order to setup Hadoop in psuedo-distributed mode, you need to perform all steps (1 to 12) that were used to setup Hadoop in Standalone mode, and then
+1. Configure all the 5 Hadoop services and HDFS
+2. Create HDFS by formating the NameNode
+3. Start all the Hadoop services
+
+13. Setup the NameNode Service
+
+	- open the file core-site.xml to configure NameNode service
+
+	Set 2 properties
+
+	fs.default.name --------> system:portnumber where namenode service will be started
+	hadoop.tmp.dir --------> name of the folder in linux fs where hdfs will be created
+
+
+	sudo vi /usr/local/hadoop/conf/core-site.xml
+
+	<property>
+	<name>fs.default.name</name>
+	<value>hdfs://192.168.11.170:10001</value>	
+	</property>
+
+	<property>
+	<name>hadoop.tmp.dir</name>
+	<value>/usr/local/hadoop/hdfs</value>	
+	</property>
+
+
+14. Setup the JobTracker Service
+
+	- open the file mapred-site.xml to configure JobTracker service
+
+	mapred.job.tracker -------> system:portnumber where Jobtracker service will be started
+	
+	sudo vi /usr/local/hadoop/conf/mapred-site.xml
+
+	<property>
+	<name>mapred.job.tracker</name>
+	<value>hdfs://192.168.11.170:10002</value>	
+	</property>
+
+
+15. Setup the DataNode and TaskTracker services
+
+	- open the file slaves to configure both the slave services
+
+	sudo vi /usr/local/hadoop/conf/slaves
+
+	Add the ipaddresses of the system where you want the DN & TT services
+
+16. Setup SecondaryNameNode service
+
+	- open the file masters to configure SNN service
+
+	sudo vi /usr/local/hadoop/conf/masters
+
+	Add the ipaddresses of the system where you want the SNN services
+
+
+17. Create a folder called "hdfs", as specified in the core-site.xml
+
+	sudo mkdir /usr/local/hadoop/hdfs
+
+18. Assign the permissions of the hadoop folders to the user "hadoop"
+
+	sudo chown hadoop /usr/local/hadoop
+	sudo chown hadoop /usr/local/hadoop/hdfs
+	sudo chown hadoop /usr/local/hadoop/bin
+	sudo chown hadoop /usr/local/hadoop/lib
+	sudo chown hadoop /usr/local/hadoop/conf
+
+19. Format the NameNode
+
+	hadoop namenode -format
+
+20. Create a password-less setup for invoking hadoop services
+
+	ssh-keygen
+
+	press "enter" 3 times
+
+	cat /home/hadoop/.ssh/id_rsa.pub > /home/hadoop/.ssh/authorized_keys
+
+
+21. Start the Hadoop services
+
+	start-all.sh
+
+
+Hadoop Web UI
+=============
+
+NameNode ----------------- 50070
+JobTracker --------------- 50030
+TaskTracker -------------- 50060
+SecondaryNameNode -------- 50090
+
+
+Link to download datasets for practice
+======================================
+
+https://drive.google.com/drive/folders/0BxSW9UUny9nsfnhMZmRSbjNtVURLa0t5amNFVlhfNXJPMVEwbWtZU052MnV4SGNmZ3Y1azg?usp=sharing
+
+
+Some Hadoop Commands
+====================
+
+1. Upload a file into HDFS
+
+hadoop fs -copyFromLocal (input file name) (output folder path)
+
+hadoop fs -copyFromLocal /home/hadoop/war_and_peace.txt /Data/Small/war_and_peace.txt
+
+Link to Hadoop documentation - file system shell guide
+======================================================
+
+http://hadoop.apache.org/docs/r1.2.1/file_system_shell.html
+
+Assignment 
+==========
+
+1. Practice all the file system command on your psuedo-distributed setup
