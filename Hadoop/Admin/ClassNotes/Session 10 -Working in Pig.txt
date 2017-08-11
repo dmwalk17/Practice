@@ -1,0 +1,212 @@
+============================================================
+BigData Analytics & Hadoop - Training - Session 10
+============================================================
+
+Trainer Name - Prashant Shantigrama
+Email ID - prashanth.grama@hotmail.com
+
+======================================================================================================
+Datasets for Assignments
+
+https://drive.google.com/drive/folders/0BxSW9UUny9nsfnhMZmRSbjNtVURLa0t5amNFVlhfNXJPMVEwbWtZU052MnV4SGNmZ3Y1azg?usp=sharing
+======================================================================================================
+
+Pig
+===
+
+Pig is an open-source high level data flow system that provides a simple procedural language called pig latin for querying and performing data manipulations over big datasets on hadoop clusters
+
+Installation of Pig
+===================
+
+1. Download pig ( pig.apache.org -or- my google drive)
+  
+	pig-0.11.1.tar.gz
+
+2. Extract the contents of the tar file
+
+	tar -xvzf pig-0.11.1.tar.gz
+
+3. Copy the extracted folder into /usr/local/pig
+
+	sudo cp -r pig-0.11.1 /usr/local/pig
+
+4. Inform the system where is Pig
+
+	sudo vi /home/hadoop/.bashrc
+
+	export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-i386
+	export PIG_PREFIX=/usr/local/pig
+	export PATH=$PATH:$PIG_PREFIX/bin
+
+5. Update the bash settings
+
+	exec bash
+
+6. Change permissions
+
+	sudo chown hadoop /usr/local/pig
+	sudo chown hadoop /usr/local/pig/bin
+	sudo chown hadoop /usr/local/pig/lib
+	sudo chown hadoop /usr/local/pig/conf
+
+.................. Now pig is installed
+
+To Start Pig
+============
+
+pig -x local -------- local mode -------- using local (linux) file system
+pig -x mapreduce ---- Mapreduce mode ---- uses HDFS (storage) / MapReduce (Execution)
+
+
+Pig latin Data Types
+====================
+
+1. Basic Data Types
+
+	chararray
+	int
+	float
+	double
+	boolean
+	........
+
+2. Advanced Data Types
+
+	tuple ---- ordered set of attributes or fields of any data type (eg:- Record in an RDBMS table)
+	bag ---- collection of tuples
+	map ----set of key-value pairs (keys must be of type chararray and value can be of any type)
+
+
+Building Solution in Pig : WordCount
+====================================
+
+war_and_peace.txt ----> count the distinct words and their occurances in this file
+
+Hadoop is good and good and better Hadoop\n
+I love Hadoop and pig and Hadoop\n
+
+book = LOAD '/Data/Small/war_and_peace.txt' USING PigStorage()  AS (lines: chararray);
+DESCRIBE book; ----> To check the schema of the relation
+DUMP book; ----> To view the contents of the relation on screen
+
+book (relation)
+---------------------------------------
+lines : chararray
+---------------------------------------
+(Hadoop is good and good and better Hadoop)
+(I love Hadoop and pig and Hadoop)
+
+words = FOREACH book GENERATE FLATTEN(TOKENIZE(lines)) AS word;
+
+words (relation)
+---------------------------------------
+word : chararray
+---------------------------------------
+(Hadoop) 
+(is) 
+(good) 
+(and) 
+(good) 
+(and) 
+(better) 
+(Hadoop)
+(I) 
+(love) 
+(Hadoop) 
+(and) 
+(pig) 
+(and) 
+(Hadoop)
+
+
+
+words1 = FOREACH book GENERATE TOKENIZE(lines) AS word;
+words (relation)
+---------------------------------------
+word1 : {tuple_of_tokens: (token: chararray)}
+---------------------------------------
+{(Hadoop) (is) (good) (and) (good) (and) (better) (Hadoop)}
+{(I) (love) (Hadoop) (and) (pig) (and) (Hadoop)}
+
+
+wordsGroup = GROUP words BY word;
+
+wordsGroup (relation)
+------------------------------------------------------
+group: chararray	| words: {(word: chararray)}
+------------------------------------------------------
+(Hadoop)		| {(Hadoop),(Hadoop),(Hadoop),(Hadoop)}
+(is)			| {(is)}
+(good)			| {(good),(good)}
+(and)			| {(and),(and),(and),(and)}
+...........
+
+wordsCount = FOREACH wordsGroup GENERATE group AS distinctWord, COUNT(words) AS distinctCount;
+
+wordsCount (relation)
+------------------------------------------------------
+distinctWord: chararray	| distinctCount: long
+------------------------------------------------------
+(Hadoop)		| 4
+(is)			| 1
+(good)			| 2
+(and)			| 4
+...........
+
+
+wordcount.pig
+==============
+book = LOAD '/Data/Small/war_and_peace.txt' USING PigStorage()  AS (lines: chararray);
+words = FOREACH book GENERATE FLATTEN(TOKENIZE(lines)) AS word;
+wordsGroup = GROUP words BY word;
+wordsCount = FOREACH wordsGroup GENERATE group AS distinctWord, COUNT(words) AS distinctCount;
+STORE wordsCount INTO '/Output/Pig/WordCount'
+
+pig /home/hadoop/wordcount.pig
+
+
+wordcount.pig (dynamic variables)
+==============
+book = LOAD '$INPUT' USING PigStorage()  AS (lines: chararray);
+words = FOREACH book GENERATE FLATTEN(TOKENIZE(lines)) AS word;
+wordsGroup = GROUP words BY word;
+wordsCount = FOREACH wordsGroup GENERATE group AS distinctWord, COUNT(words) AS distinctCount;
+STORE wordsCount INTO '$OUTPUT'
+
+pig -param input=/Data/Small/war_and_peace.txt -param output /Output/Pig/WordCount /home/hadoop/wordcount.pig
+
+
+UseCase #2
+==========
+
+DataSet : txns file (shared in my google drive)
+	  https://drive.google.com/file/d/0BxSW9UUny9nsUVVoZ3JUcEtUV2M/view?usp=sharing
+
+UseCase : Find the total revenues for each of the subCategories from the data
+	  Find the total of all cash transactions
+
+Suggested Schema : 
+	TxnId	Date	CustId	Amount	Category	Sub-Categoy	City	State	Cash/Credit
+
+transactions = LOAD '/Data/Txns/txns.txt' USING PigStorage(',') AS (TxnId: long, Date: chararray,  CustId: chararray, Amount: double, Category: chararray, SubCategory: chararray, City: chararray, State: chararray, TxnType: chararray);
+
+
+UseCase #3
+==========
+
+DataSet : Weather dataset from DoD
+	
+	DataForLab.rar 
+	https://drive.google.com/file/d/0BxSW9UUny9nsb1dnVDk1bDNYb0U/view?usp=sharing
+	
+	201201hourly.txt ---- Jan 2012
+	201202hourly.txt ---- Feb 2012
+	201203hourly.txt ---- Mar 2012
+	201204hourly.txt ---- Apr 2012
+
+UseCase : Find out the times in the first quarter of 2012 where there were clear skies
+	  Find out the average windspeeds between 15th of Jan 2012 till 15th april 2012
+
+
+	
