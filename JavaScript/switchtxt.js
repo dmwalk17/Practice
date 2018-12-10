@@ -3,8 +3,7 @@
    Tutorial 7
    Tutorial Case
 
-   Author:   
-   Date:     
+   Author: Donna Walker      
 
    Filename: switchStyle.js
 

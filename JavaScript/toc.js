@@ -4,7 +4,6 @@
    Tutorial Case
 
    Author:  Donna Walker
-   Date:  4/10/2016
 
    Filename: toc.js
 
