@@ -1,5 +1,5 @@
 *** Feedback begins with *** below each query result 
-*** Score 40/40 pts.  *** Yippy!!
+*** Score 40/40 pts.
 
 SQL> --Donna Walker
 SQL> set echo on

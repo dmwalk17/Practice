@@ -15,7 +15,8 @@
          font-weight: bold;
          color: white;
 	     background-color: #848482;
-	     text-align: center;}	
+	     text-align: center;
+	 }	
      
 	 div{
 		 height: 400px;
