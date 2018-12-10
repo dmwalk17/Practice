@@ -4,7 +4,6 @@
    Tutorial Case
 
    Author:  Donna Walker
-   Date:    4/13/2016
 
    Filename: switchStyle.js
 

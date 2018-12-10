@@ -107,6 +107,12 @@ namespace SportsPro.Controllers
 
 
             }
+
+            public PartialViewResult GetIncidents()
+        {
+
+            return PartialView("_GetIncidents");
+        }
         }
     }
 
