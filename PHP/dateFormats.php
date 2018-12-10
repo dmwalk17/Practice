@@ -1,7 +1,6 @@
 <?Php
 //  Donna Walker
 //  Web 2603 WW1
-//  9/26/16
 //  Description: Provides current date in four different formats. 
 //  Required formats are in the echo statements.
 $shortToday = date("m/d/y");

@@ -6,7 +6,7 @@
 	<!--Name: Donna Walker
 		Class: Web 2603 - WW1
 		Assignment: Project04 - 3
-		Description: Create a form. -->
+		Description: Create a form.-->
 	<style>
 	 body{
          color: white;

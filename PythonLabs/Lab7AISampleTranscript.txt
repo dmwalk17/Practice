@@ -1,6 +1,9 @@
 Donna Walker
 Lab 7
 File: WalkerD_lab7.py
+//Transcript of outcomes of the Lab 7 Python program.(Last lab in the python labs text folder) 
+//This transcript showing actual outcomes was part of the assignment.
+//It is to show what would happen if user stayed on script or varied
 
 Hello. Tony's Pizza, home of the bacon basket deepdish pizza.
 We have this number registered to Mr. Smartypants, 
