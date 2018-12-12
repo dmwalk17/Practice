@@ -1,7 +1,6 @@
 /*
  * File: OutputMethods.java
  * Author: Donna Walker
- * Date: 2/22/15
  * Class: Java 1520
  * Description: Method library for methods dealing with output.
  * 

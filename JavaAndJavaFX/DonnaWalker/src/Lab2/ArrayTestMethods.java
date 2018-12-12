@@ -1,7 +1,6 @@
 /*
  * File: ArrayTestMethods.java
- * Author: Donna Waker
- * Date: 2/22/15
+ * Author: Donna Walker
  * Class: Java 1520
  * Description: Library of various array methods for use with other programs. 
  */
