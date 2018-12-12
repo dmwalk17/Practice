@@ -1,7 +1,6 @@
 /*
  * File: AlphabetCount.java
  * Author: Donna Walker
- * Date: 2/23/2014
  * Class: Java 1520
  * Description: Reads a line of text from the keyboard and prints indicating the  
  * number of occurences of each letter of the alphabet in the text.

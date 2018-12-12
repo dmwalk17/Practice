@@ -3,7 +3,8 @@
  * Author: Donna Walker
  * Date: 3/20/15
  * Class: Java 1520
- * Description: Tests all the classes that have inheritance from the Employee class.
+ * Description: Tests all the classes that have inheritance from the Employee class. Program uses inheritance and 
+ * polymorphism.
  */
 package Lab3;
 import java.util.*;
