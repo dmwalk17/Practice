@@ -1,0 +1,26 @@
+﻿
+
+<h2>Contact list: </h2>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js">
+@Ajax.ActionLink("UpdateContact", "UpdateContact", new AjaxOptions {
+                                                    HttpMethod = "Get",
+                                                    UpdateTargetId = "myContacts",
+                                                    InsertionMode = InsertionMode.Replace })
+</script>
+<div class="row">
+
+<div class="myContacts col-md-offset-1 col-md-6 rowspan=10" >
+    @Html.Partial("_ContactView")
+</div>
+
+
+    
+    <div class="col-md-3 rowspan=10">@Html.ActionLink("Remove Contact", "Delete", "Customer", null, new { @class = "btn btn-default myButtons2" })<br /><br />
+@Html.ActionLink("Empty List", "DeleteAll", "Customer", null, new { @class = "btn btn-default myButtons2" })
+    </div>
+</div>
+<div class="row">
+
+    @Html.ActionLink("Select Another Customer", "Index", "Administration", null, new { @class = "btn btn-default myButtons2" })
+
+</div>

@@ -1,0 +1,13 @@
+@*  @foreach (var coverableItem in Model.ContractCoverablesList)
+  {
+      <td>
+          <div id="dataListItem">
+              @Html.Hidden("coverableID", coverableItem.CoverID)
+              @Html.Label(coverableItem.Name)
+              <input type='checkbox' name="coverableItemCheckBox" id="coverableItemCheckBox" />
+          </div>
+      </td>
+  }
+</tr>
+</tbody>
+</table>
