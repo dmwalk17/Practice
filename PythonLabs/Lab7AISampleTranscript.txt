@@ -1,0 +1,64 @@
+Donna Walker
+Lab 7
+File: WalkerD_lab7.py
+//Transcript of outcomes of the Lab 7 Python program.(Last lab in the python labs text folder) 
+//This transcript showing actual outcomes was part of the assignment.
+//It is to show what would happen if user stayed on script or varied
+
+Hello. Tony's Pizza, home of the bacon basket deepdish pizza.
+We have this number registered to Mr. Smartypants, 
+ Is this you?That's me Mr. Smartypants. Do you knoow my mother?
+What size pizza do you want?What's in a size? Do you know me?
+The perfect answer for that is a medium pizza.
+We have hand tossed, deep dish and thin. What dough do you want?thin it is my favorite
+Thin crust. Ok, what type of sauce, red or white?I like to howl at the moon
+We have pepperoni, sausage and anchovy. What do you want?sausage I'm hungry!
+Do you know our store location? We don't have delivery no I don't get out much.
+Let's see...
+Mr Smartypants medium thin red sausage
+Your order is complete!
+
+We are on Main, next to the building with the tie dye bull on top
+Trust me. You can't miss it.
+Your pizza will be ready for pickup in 20 minutes.
+It will cost $8.00
+Thank you for shopping at Tony's
+Goodbye.
+
+
+Hello. Tony's Pizza, home of the bacon basket deepdish pizza.
+We have this number registered to Mr. Smartypants, 
+ Is this you?No
+Ok. Sorry.
+what's your last name? Walker
+Ok. Got it. What size do you want?I've had a rough day
+The perfect answer for that is a medium pizza.
+We have hand tossed, deep dish and thin. What dough do you want?I don't know
+Ok. Something special then. Do you like red or white sauce?white please
+Ok white sauce. do you want sausage, pepperoni or anchoivies?pepperoni
+Do you know our store location? We don't have delivery yes
+Let's see...
+Mr Walker medium glutenfree white pepperoni
+Your order is complete!
+Your pizza will be ready for pickup in 20 minutes.
+It will cost $8.00
+Thank you for shopping at Tony's
+Goodbye.
+
+
+Hello. Tony's Pizza, home of the bacon basket deepdish pizza.
+We have this number registered to Mr. Smartypants, 
+ Is this you?yes
+Great. What size do you want?large
+large, just a second. Ok, what type of crust do you want?hand tossed
+Ok, hand tossed. Do you want red or white sauce?red
+red sauce ok do you want pepperoni, sausage, or  anchovies? sausage pepperoni
+Do you know our store location? We don't have delivery yes
+Let's see...
+Mr Smartypants large handtossed red pepperoni sausage
+Your order is complete!
+
+Your pizza will be ready for pickup in 20 minutes.
+It will cost $12.00
+Thank you for shopping at Tony's
+Goodbye.

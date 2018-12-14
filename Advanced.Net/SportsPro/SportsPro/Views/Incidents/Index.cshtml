@@ -1,0 +1,47 @@
+﻿@model  IEnumerable<SportsPro.Models.IncidentViewModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "Incidents", FormMethod.Post, new { id = "TheForm" }))
+{
+    <div class="row">
+        <label class="col-md-offset-1 col-md-3">Select a customer:</label>
+        <span class="col-md-4">@Html.DropDownList("ddlCustomers", (SelectList)ViewBag.Customers, "--Select Customer--", new { onchange = "this.form.submit();" }) </span>
+    </div><br /><br />
+}
+<div class="container">
+    <table id="CustomerIncidentDataList" class="table table-striped ">
+        <thead class="thead-inverse">
+            <tr>
+                <th class="col-lg-3">Product/Incident</th>
+                <th class="col-lg-3">Tech Name</th>
+                <th class="col-lg-3">Date Opened</th>
+                <th class="col-lg-3">Date Closed</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    if ((int)@item.CustomerID == Convert.ToInt32(ViewBag.SelectedItem))
+                    {
+                        <tr>
+                                <td class="col-lg-3">@item.ProductName</td>
+                                <td class="col-lg-3">@item.TechnicianName</td>
+                                <td class="col-lg-3">@item.DateOpened.ToShortDateString()</td>
+                                <td class="col-lg-3">@item.DateClosed <br /></td>
+                                <td colspan="4" class="col-lg-12">@item.Description</td>
+                            
+                        </tr>
+                    }
+                }
+            }
+            <tr></tr>
+        </tbody>
+    </table>
+</div>
+

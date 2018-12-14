@@ -1,0 +1,2 @@
+-- Practice for Lab 5
+ttitle center 'Run date: ' ' _Date right 'Author: ' SQL.USER
