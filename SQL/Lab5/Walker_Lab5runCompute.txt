@@ -1,5 +1,0 @@
-set verify off
-set echo off
-spool e:/csit2520/Lab5/WalkerLab5Outputcompute.txt
-@e:/csit2520/Lab5/WalkerLab5compute.txt
-spool off

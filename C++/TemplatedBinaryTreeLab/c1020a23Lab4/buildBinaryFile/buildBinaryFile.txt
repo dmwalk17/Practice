@@ -1,1 +1,0 @@
-./Debug/activity.cpp.o ./Debug/participant.cpp.o ./Debug/main.cpp.o   
