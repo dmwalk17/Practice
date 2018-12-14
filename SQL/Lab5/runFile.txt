@@ -1,5 +1,0 @@
-set verify off
-set echo off
-spool e:/csit2520/Lab5/Lab5PracticeOutput2.txt
-@e:/csit2520/Lab5/practiceLab5num1.txt
-spool off
